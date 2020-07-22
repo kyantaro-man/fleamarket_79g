@@ -39,28 +39,16 @@ Things you may want to cover:
 |birth_year|integer|null:false|
 |birth_month|integer|null:false|
 |birth_day|integer|null:false|
-
-### Association
-has_one: address
-has_one: credit_card
-has_many: products
-
-
-<!-- ユーザー本人情報のテーブル -->
-## addressesテーブル
-
-|Column|Type|Options|
-|------|----|-------|
 |zip_code|integer|null:false|
 |prefecture|string|null:false|
 |municipality|string|null:false|
 |address|string|null:false|
 |apartment_name|string||
-|phone_name|integer|unique:true|
-|user_id|integer|null:false, foreign_key:true|
+|phone_number|integer|unique:true|
 
 ### Association
-belongs_to: user
+has_one: credit_card
+has_many: products
 
 
 <!-- クレジットカードのテーブル -->
@@ -69,10 +57,10 @@ belongs_to: user
 |Column|Type|Options|
 |------|----|-------|
 |card_number|integer|null:false|
-|expiration_month|integer|null:false|
-|expiration_year|integer|null:false|
+|expiration_month|integer|null:false|  <!--有効期限の月-->
+|expiration_year|integer|null:false|  <!--有効期限の年-->
 |security_code|integer|null:false|
-|user_id|integer|null:false, foreign_key:true|
+|user_id|references|null:false, foreign_key:true|
 
 ### Association
 belongs_to: user
@@ -94,8 +82,8 @@ belongs_to: user
 |price|integer|null:false|
 |introduction|text|null:false|
 |user_id|integer|null:false, foreign_key:true|
-|category|references|null:false|
-|brand|references|null:false|
+|category_id|references|null:false|
+|brand_id|references|null:false|
 
 ### Association
 belongs_to: user
