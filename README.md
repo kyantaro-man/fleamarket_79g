@@ -47,8 +47,26 @@ Things you may want to cover:
 |phone_number|integer|unique:true|
 
 ### Association
+has_one: addresses
 has_one: credit_card
 has_many: products
+
+
+<!--住所のテーブル-->
+## addressesテーブル  
+
+|Column|Type|Options|
+|------|----|-------|
+|zip_code|integer|null:false|
+|prefecture|string|null:false|
+|municipality|string|null:false|
+|address|string|null:false|
+|apartment_name|string||
+|phone_number|integer|unique:true|
+|user_id|references|null:false, foreign_key:true|
+
+### Association
+belongs_to: user
 
 
 <!-- クレジットカードのテーブル -->
@@ -72,7 +90,6 @@ belongs_to: user
 |Column|Type|Options|
 |------|----|-------|
 |products_name|string|null:false|
-|image_url|string|null:false|
 |seller_name|string|null:false|
 |size|string|null:false|
 |status|string|null:false|
@@ -89,6 +106,7 @@ belongs_to: user
 belongs_to: user
 belongs_to: category
 belongs_to: brand
+has_many: images
 
 
 <!-- カテゴリのテーブル -->
@@ -96,7 +114,7 @@ belongs_to: brand
 
 |Column|Type|Options|
 |------|----|-------|
-|category_name|string|null:false|
+|name|string|null:false|
 
 ### Association
 has_many: products
@@ -107,10 +125,22 @@ has_many: products
 
 |Column|Type|Options|
 |------|----|-------|
-|brand_name|string|null:false|
+|name|string|null:false|
 
 ### Association
 has_many: products
+
+
+<!-- 画像のテーブル -->
+## imagesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|url|string|null:false|
+|product_id|references|null:false|
+
+### Association
+belongs_to: product
 
 
 
