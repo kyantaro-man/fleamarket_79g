@@ -2,7 +2,7 @@
 lock "~> 3.1"
 
 set :application, "fleamarket_79g"
-set :repo_url, "git@example.com:Echizen-Rikiya/fleamarket_79g"
+set :repo_url, "git@github.com:Echizen-Rikiya/fleamarket_79g"
 
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 
