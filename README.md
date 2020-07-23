@@ -39,12 +39,6 @@ Things you may want to cover:
 |birth_year|integer|null:false|
 |birth_month|integer|null:false|
 |birth_day|integer|null:false|
-|zip_code|integer|null:false|
-|prefecture|string|null:false|
-|municipality|string|null:false|
-|address|string|null:false|
-|apartment_name|string||
-|phone_number|integer|unique:true|
 
 ### Association
 has_one: addresses
