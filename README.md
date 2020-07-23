@@ -41,7 +41,7 @@ Things you may want to cover:
 |birth_day|integer|null:false|
 
 ### Association
-has_one: addresses
+has_one: address
 has_one: credit_card
 has_many: products
 
