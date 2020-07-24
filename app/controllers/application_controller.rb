@@ -15,16 +15,8 @@ def configure_permitted_parameters
     :kana_family_name,
     :birth_year,
     :birth_month, 
-    :birth_day,
-    address_attributes: [
-      :zip_code,
-      :prefecture,
-      :municipality,
-      :address,
-      :apartment_name,
-      :phone_number,
-      :user_id
-    ]])
+    :birth_day
+    ])
 end
 
 private
