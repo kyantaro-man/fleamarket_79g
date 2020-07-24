@@ -4,10 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :nickname, presence: true
-  validates :password, presence: true, length: {minimum: 7},
+  validates :password, length: {minimum: 7},
             #半角英数字のみ可
             format: { with: /\A[a-z0-9]+\z/i}
-  validates :email, presence: true,
+  validates :email, 
             uniqueness: {case_sensitive: false},  #重複不可
             #@とドメインを含んでいるか
             format: {with: /\A\S+@\S+\.\S+\z/}
