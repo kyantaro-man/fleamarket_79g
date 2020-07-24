@@ -9,11 +9,11 @@
       %br
       フリマアプリです
 
-    .main__image--icon
-      %a.download(href="#")
-        %img(src="http://furima.tokyo/assets/app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg" alt="")/
-      %a.download(href="#")
-        %img(src="http://furima.tokyo/assets/google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg" alt="")/
+    .inner__image--icon
+      = link_to "#", class: "icon" do
+        = image_tag 'material/app/App_Store_Badge.png',class: "appBtn"
+      = link_to "#", class: "icon" do
+        = image_tag 'material/app/google-play-badge.png',class: "googleBtn"
 
 .introduction
   .introduction__title
@@ -60,11 +60,11 @@
       %br
       欲しかったあの商品に出会えるかもしれません。
 
-    .second-introduction__image--icon
-      %a.download(href="#")
-        %img(src="http://furima.tokyo/assets/app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg" alt="")/
-      %a.download(href="#")
-        %img(src="http://furima.tokyo/assets/google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg" alt="")/
+    .inner__image--icon
+      = link_to "#", class: "icon" do
+        = image_tag 'material/app/App_Store_Badge.png',class: "appBtn"
+      = link_to "#", class: "icon" do
+        = image_tag 'material/app/google-play-badge.png',class: "googleBtn"
 
 .feature
   .feature__title
@@ -112,10 +112,10 @@
       今すぐ無料ダウンロード！
       
     .inner__image--icon
-      %a.download(href="#")
-        %img(src="http://furima.tokyo/assets/app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg" alt="")/
-      %a.download(href="#")
-        %img(src="http://furima.tokyo/assets/google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg" alt="")/
+      = link_to "#", class: "icon" do
+        = image_tag 'material/app/App_Store_Badge.png',class: "appBtn"
+      = link_to "#", class: "icon" do
+        = image_tag 'material/app/google-play-badge.png',class: "googleBtn"
 
 = render partial: "template/footer"
 = render partial: "template/exhibit"

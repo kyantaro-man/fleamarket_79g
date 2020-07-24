@@ -1,4 +1,15 @@
-// メイン
+@mixin inner__image--icon {
+  .appBtn{
+    width:  250px;
+    height: 70px;
+    margin: 15px 0;
+  }
+  .googleBtn{
+    width:  280px;
+    height: 100px;
+  } 
+}
+
 .main{
   height:             600px;
   width:              100vw;
@@ -26,6 +37,7 @@
       color:      white;
       margin:       16px 0 0 0;
     }
+    @include  inner__image--icon ();
   }
 }
 
@@ -109,6 +121,7 @@
       color:      white;
       margin:       16px 0 0 0;
     }
+    @include  inner__image--icon ();
   }
 }
 
@@ -183,10 +196,7 @@
       margin:         16px 0 0 0;
       text-align:     center;
     }
-    .inner__image--icon{
-      height:         100px;
-      width:          500px;
-    }
+      @include  inner__image--icon ();
   }
 }
 
