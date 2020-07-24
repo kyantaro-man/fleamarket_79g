@@ -2,78 +2,66 @@
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = render "devise/shared/error_messages", resource: resource
   .field
-    = f.label :nickname
+    = f.label :"ニックネーム"
     %br/
     = f.text_field :nickname
   .field
-    = f.label :email
+    = f.label :"メールアドレス"
     %br/
     = f.email_field :email, autofocus: true, autocomplete: "email"
   .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
+    = f.label :"パスワード"
     %br/
-    = f.password_field :password, autocomplete: "new-password"
+    = f.password_field :password, {autocomplete: "new-password", placeholder: "7文字以上の半角英数字"}
   .field
-    = f.label :password_confirmation
+    = f.label :"パスワード(確認用)"
     %br/
     = f.password_field :password_confirmation, autocomplete: "new-password"
   .field
-    = f.label :family_name
+    = f.label :"お名前(全角)"
     %br/
-    = f.text_field :family_name
+    = f.text_field :family_name, {placeholder:"例) 山田"}
+    = f.text_field :first_name, {placeholder:"例) 彩"}
   .field
-    = f.label :first_name
+    = f.label :"お名前かな(全角)"
     %br/
-    = f.text_field :first_name
+    = f.text_field :kana_family_name, {placeholder:"例) やまだ"}
+    = f.text_field :kana_first_name, {placeholder:"例) あや"}
   .field
-    = f.label :kana_family_name
+    = f.label :"生年月日"
     %br/
-    = f.text_field :kana_family_name
-  .field
-    = f.label :kana_first_name
-    %br/
-    = f.text_field :kana_first_name
-  .field
-    = f.label :birth_year
-    %br/
-    = f.number_field :birth_year
-  .field
-    = f.label :birth_month
-    %br/
-    = f.number_field :birth_month
-  .field
-    = f.label :birth_day
-    %br/
-    = f.number_field :birth_day
+    = f.text_field :birth_year
+    %span 年
+    = f.text_field :birth_month
+    %span 月
+    = f.text_field :birth_day
+    %span 日
 
   = f.fields_for :address do |f|
     .field
-      = f.label :zip_code
+      = f.label :"郵便番号"
       %br/
-      = f.number_field :zip_code
+      = f.text_field :zip_code
     .field
-      = f.label :prefecture
+      = f.label :"都道府県"
       %br/
       = f.text_field :prefecture
     .field
-      = f.label :municipality
+      = f.label :"市区町村"
       %br/
       = f.text_field :municipality
     .field
-      = f.label :address
+      = f.label :"住所"
       %br/
       = f.text_field :address
     .field
-      = f.label :apartment_name
+      = f.label :"建物名(任意)"
       %br/
       = f.text_field :apartment_name
     .field
-      = f.label :phone_number
+      = f.label :"電話番号(任意)"
       %br/
-      = f.number_field :phone_number
+      = f.text_field :phone_number
   .actions
-    = f.submit "Sign up"
+    = f.submit "登録する"
 = render "devise/shared/links"
