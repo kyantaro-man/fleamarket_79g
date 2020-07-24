@@ -5,32 +5,31 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
   def new
     @user = User.new
-    # @address = @user.build_address
   end
   # GET /resource/sign_up
   def create
     @user = User.new(sign_up_params)
-    unless @user.valid?
-      flash.now[:alert] = @user.errors.full_messages
+    unless @user.valid?                                                               #送られたパラメーターがバリデーションに違反しているかをチェック
+      flash.now[:alert] = @user.errors.full_messages 
       render :new and return
     end
-    session["devise.regist_data"] = {user: @user.attributes}
-    session["devise.regist_data"][:user]["password"] = params[:user][:password]
-    @address = @user.build_address
+    session["devise.regist_data"] = {user: @user.attributes}                          #sessionに値をハッシュの形で保持
+    session["devise.regist_data"][:user]["password"] = params[:user][:password]       #パスワードをsessionに代入
+    @address = @user.build_address                                                    #userに紐づくaddressモデルのインスタンスを@addressに代入
     render :new_address
   end
 
 
   def create_address
-    @user = User.new(session["devise.regist_data"]["user"])
+    @user = User.new(session["devise.regist_data"]["user"])                            #sessionが保持してるuser情報を@userに代入
     @address = Address.new(address_params)
     unless @address.valid?
       flash.now[:alert] = @address.errors.full_messages
       render :new_address and return
     end
-    @user.build_address(@address.attributes)
+    @user.build_address(@address.attributes)                                           #バリデーションが完了した情報とsessionで保持していた情報をユーザー情報に代入
     @user.save
-    session["devise.regist_data"]["user"].clear
+    session["devise.regist_data"]["user"].clear                                        #clearでsessionを削除
     sign_in(:user, @user)
   end
 
