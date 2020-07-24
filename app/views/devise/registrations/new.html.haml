@@ -1,41 +1,52 @@
-%h2 新規登録
-= form_for(@user, url: user_registration_path) do |f|
-  = render "devise/shared/error_messages", resource: @user
-  .field
-    = f.label :"ニックネーム"
-    %br/
-    = f.text_field :nickname
-  .field
-    = f.label :"メールアドレス"
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :"パスワード"
-    %br/
-    = f.password_field :password, {autocomplete: "new-password", placeholder: "7文字以上の半角英数字"}
-  .field
-    = f.label :"パスワード(確認用)"
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .field
-    = f.label :"お名前(全角)"
-    %br/
-    = f.text_field :family_name, {placeholder:"例) 山田"}
-    = f.text_field :first_name, {placeholder:"例) 彩"}
-  .field
-    = f.label :"お名前かな(全角)"
-    %br/
-    = f.text_field :kana_family_name, {placeholder:"例) やまだ"}
-    = f.text_field :kana_first_name, {placeholder:"例) あや"}
-  .field
-    = f.label :"生年月日"
-    %br/
-    = f.text_field :birth_year
-    %span 年
-    = f.text_field :birth_month
-    %span 月
-    = f.text_field :birth_day
-    %span 日
-  .actions
-    = f.submit "next"
-= render "devise/shared/links"
+.RegistrationWrapper
+  .RegistrationNew
+    .RegistrationTitle
+      %h1 会員情報入力
+    .RegistrationForm
+      = form_for(@user, url: user_registration_path) do |f|
+        = render "devise/shared/error_messages", resource: @user
+        .FormGroup
+          = f.label :"ニックネーム"
+          %span.FormGroup__require 必須
+          %br/
+          = f.text_field :nickname, {placeholder:"例) フリマ太郎"}
+        .FormGroup
+          = f.label :"メールアドレス"
+          %span.FormGroup__require 必須
+          %br/
+          = f.email_field :email, {autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可"}
+        .FormGroup
+          = f.label :"パスワード"
+          %span.FormGroup__require 必須
+          %br/
+          = f.password_field :password, {autocomplete: "new-password", placeholder: "7文字以上の半角英数字"}
+        .FormGroup
+          = f.label :"パスワード"
+          %span.FormGroup__confirm 確認用
+          %br/
+          = f.password_field :password_confirmation, {autocomplete: "new-password", placeholder:"確認のためもう一度入力して下さい"}
+        .FormGroup
+          = f.label :"お名前(全角)"
+          %span.FormGroup__require 必須
+          %br/
+          = f.text_field :family_name, {placeholder:"例) 山田"}
+          = f.text_field :first_name, {placeholder:"例) 彩"}
+        .FormGroup
+          = f.label :"お名前かな(全角)"
+          %span.FormGroup__require 必須
+          %br/
+          = f.text_field :kana_family_name, {placeholder:"例) やまだ"}
+          = f.text_field :kana_first_name, {placeholder:"例) あや"}
+        .FormGroup
+          = f.label :"生年月日"
+          %span.FormGroup__require 必須
+          %br/
+          = f.text_field :birth_year, {placeholder:"例) 2000"}
+          %span 年
+          = f.text_field :birth_month, {placeholder:"例) 1"}
+          %span 月
+          = f.text_field :birth_day, {placeholder:"例) 1"}
+          %span 日
+        .actions
+          = f.submit "次へ"
+      -# = render "devise/shared/links"

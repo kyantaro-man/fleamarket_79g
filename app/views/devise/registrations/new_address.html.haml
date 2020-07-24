@@ -1,32 +1,41 @@
-%h1 住所登録
-.field
-  =form_for(@address, url: addresses_path, method: :post) do |f|
-    =render "devise/shared/error_messages", resource: @address
-    .field
-      = f.label :"郵便番号"
-      %br/
-      = f.text_field :zip_code
-    .field
-      = f.label :"都道府県"
-      %br/
-      = f.text_field :prefecture
-    .field
-      = f.label :"市区町村"
-      %br/
-      = f.text_field :municipality
-    .field
-      = f.label :"住所"
-      %br/
-      = f.text_field :address
-    .field
-      = f.label :"建物名(任意)"
-      %br/
-      = f.text_field :apartment_name
-    .field
-      = f.label :"電話番号(任意)"
-      %br/
-      = f.text_field :phone_number, {placeholder:"ハイフンなしで入力してください"}
-    .actions
-      = f.submit "sign up"
-  = render "devise/shared/links"
+.RegistrationWraper
+  .RegistrationNew
+    .RegistrationTitle
+      %h1 住所登録
+    .RegistrationFrom
+      = form_for(@address, url: addresses_path, method: :post) do |f|
+        = render "devise/shared/error_messages", resource: @address
+        .FormGroup
+          = f.label :"郵便番号"
+          %span.FormGroup__require 必須
+          %br/
+          = f.text_field :zip_code
+        .FormGroup
+          = f.label :"都道府県"
+          %span.FormGroup__require 必須
+          %br/
+          = f.text_field :prefecture
+        .FormGroup
+          = f.label :"市区町村"
+          %span.FormGroup__require 必須
+          %br/
+          = f.text_field :municipality
+        .FormGroup
+          = f.label :"番地"
+          %span.FormGroup__require 必須
+          %br/
+          = f.text_field :address
+        .FormGroup
+          = f.label :"建物名"
+          %span.FormGroup__optional 任意
+          %br/
+          = f.text_field :apartment_name
+        .FormGroup
+          = f.label :"電話番号"
+          %span.FormGroup__optional 任意
+          %br/
+          = f.text_field :phone_number, {placeholder:"ハイフンなしで入力してください"}
+        .actions
+          = f.submit "sign up"
+      -# = render "devise/shared/links"
 
