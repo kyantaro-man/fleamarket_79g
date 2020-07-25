@@ -1,8 +1,8 @@
-.RegistrationWraper
+.RegistrationWrapper
   .RegistrationNew
     .RegistrationTitle
-      %h1 住所登録
-    .RegistrationFrom
+      %h2 住所登録
+    .RegistrationForm
       = form_for(@address, url: addresses_path, method: :post) do |f|
         = render "devise/shared/error_messages", resource: @address
         .FormGroup
@@ -36,6 +36,6 @@
           %br/
           = f.text_field :phone_number, {placeholder:"ハイフンなしで入力してください"}
         .actions
-          = f.submit "sign up"
+          = f.submit "登録"
       -# = render "devise/shared/links"
 
