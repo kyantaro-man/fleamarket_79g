@@ -1,3 +1,28 @@
 // Place all the styles related to the items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+  box-sizing: border-box;
+}
+
+.main{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  .main-list{
+    width: 80%;
+    margin: 10px;
+    .ul-list{
+      width: 188px;
+      height: 330px;
+      .post-image{
+      }
+      .price-name{
+        border: 1px solid gray;
+        margin: 0px;
+        
+      }
+    }
+  }
+}

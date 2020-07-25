@@ -1,0 +1,104 @@
+.main
+  .main-container
+    = form_with model: @item, html: {class: "form"}, local:true do |f|
+      %p 
+        出品画像
+        %span.require 必須
+      %p 
+        最大10枚までアップロードできます 
+      = f.file_field :item_image
+      %br
+
+      %p 
+        出品者名
+        %span.require 必須
+      = f.text_field :seller
+      %br
+
+      %p 
+        商品名
+        %span.require 必須
+      = f.text_field :item_name
+      %br
+
+      %p 
+        商品の説明
+        %span.require 必須
+      = f.text_area :introduction, placeholder: "商品の説明 (必須 1,000字以内)(色、素材、重さ、定価、注意点など)  例) 2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", size:"50x5"
+      %br
+
+      %p
+        商品の詳細
+      %p 
+        カテゴリー
+        %span.require 必須
+      = f.text_field :category
+      %br
+
+      %p 
+        ブランド
+        %span.require 任意
+      = f.text_field :brand
+      %br
+
+      %p 
+        商品の状態
+        %span.require 必須
+      = f.text_field :condition
+      %br
+
+      %p 
+        商品のサイズ
+        %span.require 必須
+      = f.text_field :size
+      %br
+
+      %p
+        配送について
+
+      %p 
+        配送料の負担
+        %span.require 必須
+      = f.text_field :postage_player
+      %br
+
+      %p 
+        配送の方法
+        %span.require 必須
+      = f.text_field :postage_type
+      %br
+      
+      %p 
+        発送元の地域
+        %span.require 必須
+      = f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '選択して下さい'
+      %br
+
+      %p 
+        発送までの日数
+        %span.require 必須
+      = f.text_field :shipping_date
+      %br
+
+      .price
+        価格  (￥300〜9,999,999)
+        %p 
+        販売価格
+        %span.require 必須
+        %span.require ￥
+        %span.require  
+        = f.number_field :price ,placeholder: "0"
+        %br
+        %p
+          販売手数料  (10％)
+      .submit
+        %p
+          販売利益
+        .submit-btn
+          = f.submit "出品する"
+        .create-btn
+          = link_to "下書きに保存", "#", method: :get
+        .back-btn
+          = link_to '戻る', "#", method: :get
+      .ban
+        禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。また、出品をもちまして加盟店規約に同意したことになります。

@@ -1,0 +1,11 @@
+.main
+  - @items.each do |item|
+    %ul.main-list
+      %li.ul-list
+        .main-post
+          = image_tag item.item_image.thumb.url, class: 'post-image'
+          .price-name
+            %p 
+              = item.price
+            %p
+              = item.item_name 
