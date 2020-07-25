@@ -6,39 +6,39 @@
       = form_for(@user, url: user_registration_path) do |f|
         = render "devise/shared/error_messages", resource: @user
         .FormGroup
-          = f.label :"ニックネーム"
+          = f.label :nickname, "ニックネーム"
           %span.FormGroup__require 必須
           %br/
-          = f.text_field :nickname, {placeholder:"例) フリマ太郎", class:'FormGroup__input'}
+          = f.text_field :nickname, {autofocus: true, placeholder:"例) フリマ太郎", class:'FormGroup__input'}
         .FormGroup
-          = f.label :"メールアドレス"
+          = f.label :email, "メールアドレス"
           %span.FormGroup__require 必須
           %br/
-          = f.email_field :email, {autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可", class:'FormGroup__input'}
+          = f.email_field :email, {autocomplete: "email", placeholder: "PC・携帯どちらでも可", class:'FormGroup__input'}
         .FormGroup
-          = f.label :"パスワード"
+          = f.label :password, "パスワード"
           %span.FormGroup__require 必須
           %br/
           = f.password_field :password, {autocomplete: "new-password", placeholder: "7文字以上の半角英数字", class:'FormGroup__input'}
         .FormGroup
-          = f.label :"パスワード"
+          = f.label :password_confirmation, "パスワード"
           %span.FormGroup__confirm 確認用
           %br/
           = f.password_field :password_confirmation, {autocomplete: "new-password", placeholder:"確認のためもう一度入力して下さい", class:'FormGroup__input'}
         .FormGroup
-          = f.label :"お名前(全角)"
+          = f.label "お名前(全角)"
           %span.FormGroup__require 必須
           %br/
           = f.text_field :family_name, {placeholder:"例) 山田", class:'FormGroup__input half'}
           = f.text_field :first_name, {placeholder:"例) 彩", class:'FormGroup__input half'}
         .FormGroup
-          = f.label :"お名前かな(全角)"
+          = f.label "お名前かな(全角)"
           %span.FormGroup__require 必須
           %br/
           = f.text_field :kana_family_name, {placeholder:"例) やまだ", class:'FormGroup__input half'}
           = f.text_field :kana_first_name, {placeholder:"例) あや", class:'FormGroup__input half'}
         .FormGroup
-          = f.label :"生年月日(半角数字)"
+          = f.label "生年月日(半角数字)"
           %span.FormGroup__require 必須
           %br/
           = f.text_field :birth_year, class:'FormGroup__input short'

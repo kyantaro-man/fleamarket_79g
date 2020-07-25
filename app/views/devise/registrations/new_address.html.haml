@@ -6,36 +6,36 @@
       = form_for(@address, url: addresses_path, method: :post) do |f|
         = render "devise/shared/error_messages", resource: @address
         .FormGroup
-          = f.label :"郵便番号"
+          = f.label :zip_code, "郵便番号"
           %span.FormGroup__require 必須
           %br/
-          = f.text_field :zip_code
+          = f.text_field :zip_code, class:'FormGroup__input'
         .FormGroup
-          = f.label :"都道府県"
+          = f.label :prefecture, "都道府県"
           %span.FormGroup__require 必須
           %br/
-          = f.text_field :prefecture
+          = f.text_field :prefecture, class:'FormGroup__input'
         .FormGroup
-          = f.label :"市区町村"
+          = f.label :municipality, "市区町村"
           %span.FormGroup__require 必須
           %br/
-          = f.text_field :municipality
+          = f.text_field :municipality, class:'FormGroup__input'
         .FormGroup
-          = f.label :"番地"
+          = f.label :address, "番地"
           %span.FormGroup__require 必須
           %br/
-          = f.text_field :address
+          = f.text_field :address, class:'FormGroup__input'
         .FormGroup
-          = f.label :"建物名"
+          = f.label :apartment_name, "建物名"
           %span.FormGroup__optional 任意
           %br/
-          = f.text_field :apartment_name
+          = f.text_field :apartment_name, class:'FormGroup__input'
         .FormGroup
-          = f.label :"電話番号"
+          = f.label :phone_number, "電話番号"
           %span.FormGroup__optional 任意
           %br/
-          = f.text_field :phone_number, {placeholder:"ハイフンなしで入力してください"}
+          = f.text_field :phone_number, {placeholder:"ハイフンなしで入力してください", class:'FormGroup__input'}
         .actions
-          = f.submit "登録"
+          = f.submit "登録", class: 'FormBtn'
       -# = render "devise/shared/links"
 

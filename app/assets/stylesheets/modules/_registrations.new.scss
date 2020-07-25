@@ -32,6 +32,10 @@
       margin-left: auto;
       margin-top: 15px;
       .FormGroup{
+        margin-bottom: 15px;
+        label{
+          font-weight: bold;
+        }
         &__require{
           background-color: rgb(255, 58, 58);
           margin-left: 8px;
@@ -42,6 +46,14 @@
         }
         &__confirm{
           background-color: lightskyblue;
+          margin-left: 8px;
+          padding: 2px 4px;
+          border-radius: 2px;
+          color: #fff;
+          font-size: 12px;
+        }
+        &__optional{
+          background-color: rgb(160, 240, 171);
           margin-left: 8px;
           padding: 2px 4px;
           border-radius: 2px;
