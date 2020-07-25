@@ -1,0 +1,21 @@
+.header
+  .header__main
+    .header__box
+      .header__logo
+        = link_to (image_tag "material/logo/logo.png", height: "50", width: "150")
+      %form.searchBox
+        %input.input{type: "text", placeholder: "キーワードで検索"}
+        = button_tag type: 'submit', class: "submit" do
+          = icon('fa', 'search',class: "search__Icon")
+    .header__navi
+      %ul.lists__left
+        %li.btn__category 
+        カテゴリー
+        %li.btn__brand 
+        ブランド
+          
+      %ul.lists__right
+        %li.btn__login 
+        ログイン
+        %li.btn__new
+        新規会員登録
