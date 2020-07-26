@@ -47,5 +47,23 @@ describe Address do
       expect(address.errors[:zip_code]).to include("は不正な値です")
     end
 
+    it "phone_numberが意図しない値(ハイフンあり)の場合は登録できないこと" do
+      address = build(:address, phone_number: "123-456-7890")
+      address.valid?
+      expect(address.errors[:phone_number]).to include("は不正な値です")
+    end
+
+    it "phone_numberが9桁以下の場合は登録できないこと" do
+      address = build(:address, phone_number: "123456789")
+      address.valid?
+      expect(address.errors[:phone_number]).to include("は不正な値です")
+    end
+
+    it "phone_numberが12桁以上の場合は登録できないこと" do
+      address = build(:address, phone_number: "123456789012")
+      address.valid?
+      expect(address.errors[:phone_number]).to include("は不正な値です")
+    end
+
   end
 end
