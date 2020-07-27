@@ -14,8 +14,15 @@
         %li.btn__brand 
         ブランド
           
-      %ul.lists__right
-        %li.btn__login 
-        ログイン
-        %li.btn__new
-        新規会員登録
+      - if user_signed_in?    #ログイン時の表示
+        %ul.lists__right
+          %li.btn__login
+            = link_to "マイページ", "#"
+          %li.btn__new
+            = link_to "ログアウト", destroy_user_session_path, method: :delete
+      - else                  #ログアウト時の表示
+        %ul.lists__right
+          %li.btn__login 
+            = link_to "ログイン", user_session_path
+          %li.btn__new
+            = link_to "新規登録", new_user_registration_path

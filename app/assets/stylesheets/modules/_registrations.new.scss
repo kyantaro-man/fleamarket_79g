@@ -7,7 +7,6 @@
   height: auto;
   background-color: #f5f5f5;
   padding: 50px 0;
-
   .RegistrationNew{
     width: 700px;
     height: auto;
@@ -22,7 +21,19 @@
       h2{
         font-size: 22px;
         font-weight: bold;
-
+      }
+      .Btn-blue{
+        display: block;
+        width: 50%;
+        margin: 0 auto;
+        background-color: #3CCACE;
+        border: 1px solid #3CCACE;
+        color: #fff;
+        border-radius: 4px;
+        cursor: pointer;
+        text-align: center;
+        line-height: 48px;
+        text-decoration: none;
       }
     }
     .RegistrationForm{
@@ -80,13 +91,11 @@
       }
       .actions{
         margin-top: 25px;
-        
-
-      .FormBtn{
+        .FormBtn{
           display: block;
           width: 100%;
-          background-color: #ea352d;
-          border: 1px solid #ea352d;
+          background-color: #87CEFA;
+          border: 1px solid #87CEFA;
           color: #fff;
           border-radius: 4px;
           cursor: pointer;
@@ -94,7 +103,6 @@
           line-height: 48px;
         }
       }
-      
     }
   }
 }
