@@ -5,23 +5,15 @@
       = link_to "新規登録", new_user_registration_path, {class: "Btn-blue"}
 
     .RegistrationForm
-      = form_for(@user, url: user_registration_path) do |f|
-        = render "devise/shared/error_messages", resource: @user
-        .FormGroup
-          = f.label :nickname, "ニックネーム"
-          %span.FormGroup__require 必須
-          %br/
-          = f.text_field :nickname, {autofocus: true, placeholder:"例) フリマ太郎", class:'FormGroup__input'}
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .FormGroup
           = f.label :email, "メールアドレス"
-          %span.FormGroup__require 必須
           %br/
-          = f.email_field :email, {autocomplete: "email", placeholder: "PC・携帯どちらでも可", class:'FormGroup__input'}
+          = f.email_field :email, {autocomplete: "email", class:'FormGroup__input'}
         .FormGroup
           = f.label :password, "パスワード"
-          %span.FormGroup__require 必須
           %br/
-          = f.password_field :password, {autocomplete: "new-password", placeholder: "7文字以上の半角英数字", class:'FormGroup__input'}
+          = f.password_field :password, {autocomplete: "current-password", placeholder: "7文字以上の半角英数字", class:'FormGroup__input'}
         .actions
-          = f.submit "Log in", class: "FormBtn"
+          = f.submit "ログイン", class: "FormBtn"
 -# = render "devise/shared/links"
