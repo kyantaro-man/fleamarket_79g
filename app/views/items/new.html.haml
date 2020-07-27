@@ -1,0 +1,54 @@
+-# 出品画面
+
+.Wrapper
+  .sell-header
+  .Container
+    .TransactionField
+    %section.TransactionBox
+      %h2.TitleText 購入内容の確認
+    %section.TransactionBox
+      .Item
+      .Image
+      .Text
+        %p.Name MacBook
+        %p.PriceText 送料込み（税込） ￥1,980
+    %section.TransactionBox
+      .Payment
+      %span.AmountText 支払い金額
+      %span.AmountPrice ￥1,980
+      %label.Point
+      %label.PointLeft
+        %span.CheckBox
+        %span
+          %input.CheckBoxInput
+        %img.PointLogo
+        %p.PointText ポイント
+      %p.PointRight 所持ポイント : P0
+    %section.TransactionBox
+      .Purchase
+      %h3.PurchaseText 支払い方法
+      = link_to "変更する", "#", class: "ChangeLink"
+      .Card
+      %p クレジットカード
+      %p ************9999
+      %p 有効期限 12/20
+      %img.CardLogo
+    %section.TransactionBox
+      .Delivery
+      .Shipping
+        %h3.ShippingText 配送先
+        = link_to "変更する", "#", class: "ChangeLink"
+      .Address
+        %p 〒111-1111
+        %p 東京都 △△区 ◯◯町167-7
+        %p 山田 太郎
+    %section.TransactionBox.Large
+      .Button
+      = button_to "購入する", "#", class: "PurchaseBtn"
+  .Footer
+
+
+
+.sell-header
+.sell-container
+  .sell-contents

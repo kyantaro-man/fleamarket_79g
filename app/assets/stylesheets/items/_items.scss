@@ -43,25 +43,25 @@
     &--flex{
       @include pic_up_flex();
       overflow:         auto;
-      .item{
+      .item60{
         position: relative;
-        .image{
-          display: flex;
-          justify-content: space-between;
-        }
-        .info{
-          width: 1400px;
-          height: 100px;
-          background-color: #fff;
-          display: flex;
-          justify-content: space-between;
-          p{
-            line-height: 25px;
-            padding: 10px;
-          }
-          i{
-            bottom: 10px;
-            right: 10px;
+        display: flex;
+        justify-content: space-between;
+        .image60{
+          .info60{
+            width: 350px;
+            height: 100px;
+            background-color: #fff;
+            display: flex;
+            justify-content: space-between;
+            p{
+              line-height: 25px;
+              padding: 10px;
+            }
+            i{
+              bottom: 10px;
+              right: 10px;
+            }
           }
         }
       }

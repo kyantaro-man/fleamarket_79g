@@ -174,10 +174,16 @@
   background-image:   image-url("material/pict/bg-appBanner-pict.jpg");
   background-size:    cover;
 
+
   &__image--text{
     position:     absolute;
     top:          200px;
     left:         60px;
+    left: 50%;
+    top: 50%;
+    margin-left: -280px;
+    margin-top: -100px;
+  
 
     h1{
       font-size:      24px;

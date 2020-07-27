@@ -104,18 +104,6 @@
     %h1.color アーカイバ
     = render partial: "template/items"
 
-.banner
-  .banner__image--text
-    %h1
-      だれでもかんたん、人生を変えるフリマアプリ 
-    %p 
-      今すぐ無料ダウンロード！
-      
-    .inner__image--icon
-      = link_to "#", class: "icon" do
-        = image_tag 'material/app/App_Store_Badge.png',class: "appBtn"
-      = link_to "#", class: "icon" do
-        = image_tag 'material/app/google-play-badge.png',class: "googleBtn"
-
+= render partial: "template/banner"
 = render partial: "template/footer"
 = render partial: "template/exhibit"
