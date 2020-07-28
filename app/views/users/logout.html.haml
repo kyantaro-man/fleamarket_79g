@@ -1,0 +1,25 @@
+= render partial: "template/header"
+.UserWrapper
+  .UserHeader
+    %ol.UserHeader__list
+      %li
+        =link_to root_path do
+          フリマ
+          = icon('fa', 'angle-right')
+      %li
+        =link_to user_path(current_user.id) do
+          マイページ
+          = icon('fa', 'angle-right')
+      %li
+        %span ログアウト
+  .UserContainer
+    .UserContent
+      .UserContent__logout
+        = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "LogoutBtn"
+    = render "side_bar"
+= render partial: "template/footer"
+= render partial: "template/exhibit"
+
+
+
+
