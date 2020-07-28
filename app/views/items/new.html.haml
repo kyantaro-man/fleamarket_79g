@@ -4,16 +4,32 @@
       %p 
         出品画像
         %span.require 必須
-      %p 
-        最大10枚までアップロードできます 
-      = f.file_field :item_image
+      = form_with(model:@item, locale: true , id: 'new_item') do |f|
+        .item-image-container
+          = f.label :"出品画像"
+          %span.form-require 必須
+          %p.item-image-container__lead
+            最大5枚までアップロードできます
+          .item-image-container__unit
+            = f.fields_for :item_images do |i|
+              %ul
+
+              .item-image-container__unit--guide
+                %label(for="image-label")
+                  = i.file_field :image, multiple: true, class: 'image-upload-dropfile-hidden', id:"image-label",type: 'file', name: "item_images[image][]"
+                  %div.image-upload-dropfile-entire
+                  .have-image
+                    = icon('fas','camera')
+                    %p#d-d-delete ドラッグ&ドロップ
+                    %p#click-delete またはクリックしてファイルをアップロード
+      -# = f.file_field :item_image
       %br
 
-      %p 
-        出品者名
-        %span.require 必須
-      = f.text_field :seller
-      %br
+      -# %p 
+      -#   出品者名
+      -#   %span.require 必須
+      -# = f.text_field :seller
+      -# %br
 
       %p 
         商品名
@@ -32,7 +48,7 @@
       %p 
         カテゴリー
         %span.require 必須
-      = f.text_field :category
+      = f.text_field :category_id
       %br
 
       %p 
@@ -44,14 +60,15 @@
       %p 
         商品の状態
         %span.require 必須
-      = f.text_field :condition
+      = f.collection_select :condition_id, Condition.all, :id, :name, include_blank: '選択して下さい'
+      -# = f.text_field :condition
       %br
 
-      %p 
-        商品のサイズ
-        %span.require 必須
-      = f.text_field :size
-      %br
+      -# %p 
+      -#   商品のサイズ
+      -#   %span.require 必須
+      -# = f.text_field :size
+      -# %br
 
       %p
         配送について
@@ -59,14 +76,15 @@
       %p 
         配送料の負担
         %span.require 必須
-      = f.text_field :postage_player
+      = f.collection_select :postageplayer_id, Postageplayer.all, :id, :name, include_blank: '選択して下さい'
+      -# = f.text_field :postage_player_id
       %br
 
-      %p 
-        配送の方法
-        %span.require 必須
-      = f.text_field :postage_type
-      %br
+      -# %p 
+      -#   配送の方法
+      -#   %span.require 必須
+      -# = f.text_field :postage_type_id
+      -# %br
       
       %p 
         発送元の地域
@@ -77,7 +95,8 @@
       %p 
         発送までの日数
         %span.require 必須
-      = f.text_field :shipping_date
+      = f.collection_select :shippingdate_id, Shippingdate.all, :id, :name, include_blank: '選択して下さい'
+      -# = f.text_field :shipping_date_id
       %br
 
       .price

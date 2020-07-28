@@ -10,28 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_24_155548) do
+ActiveRecord::Schema.define(version: 2020_07_28_011721) do
+
+  create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "image", null: false
+    t.integer "item_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "item_name", null: false
     t.text "item_image", null: false
-    t.string "seller", null: false
-    t.string "category", null: false
+    t.string "category_id", null: false
     t.string "brand", null: false
-    t.string "size", null: false
-    t.string "condition", null: false
-    t.string "postage_player", null: false
-    t.string "postage_type", null: false
-    t.integer "prefecture_code", null: false
-    t.string "shipping_date", null: false
+    t.integer "condition_id", null: false
+    t.integer "postageplayer_id", null: false
+    t.bigint "prefecture_id", null: false
+    t.integer "shippingdate_id", null: false
     t.integer "price", null: false
     t.text "introduction", null: false
-    t.string "buyer"
+    t.integer "buyer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "prefecture_code_id"
-    t.bigint "prefecture_id", null: false
-    t.index ["prefecture_code_id"], name: "index_items_on_prefecture_code_id"
     t.index ["prefecture_id"], name: "index_items_on_prefecture_id"
   end
 
