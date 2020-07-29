@@ -1,0 +1,25 @@
+= render partial: "template/header"
+.UserWrapper
+  .UserHeader
+    %ol.UserHeader__list
+      %li
+        =link_to root_path do
+          フリマ
+          = icon('fa', 'angle-right')
+      %li
+        %span マイページ
+  .UserContainer
+    .UserContent
+      .UserContent__userIcon
+        = link_to "#" do
+          %figure
+            = image_tag "material/icon/member_photo_noimage_thumb.png", size:"60x60", alt: "user-image"
+          %h2 #{@nickname}
+          .UserStatus
+            いいね
+            ０
+            出品数
+            ０
+    = render "side_bar"
+= render partial: "template/footer"
+= render partial: "template/exhibit"
