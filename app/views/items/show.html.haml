@@ -1,0 +1,55 @@
+= render partial: "template/header"
+.ItemShowWrapper
+  .ItemShowHeader
+    %ol.ItemShowHeader__list
+      %li
+        =link_to root_path do
+          フリマ
+          = icon('fa', 'angle-right')
+      %li
+        =link_to "#" do
+          カテゴリ１
+          = icon('fa', 'angle-right')
+      %li
+        =link_to "#" do
+          カテゴリ２
+          = icon('fa', 'angle-right')
+      %li
+        %span 商品名
+  .ItemShowContent
+    .ItemShowContent__top
+      .ItemBox
+        .ItemBox__title
+          商品名
+        .ItemBox__image
+        .ItemBox__price
+        .ItemBox__info
+        .ItemBox__table
+          %table
+            %tr
+              %th 出品者
+              %td a
+            %tr
+              %th カテゴリー
+              %td
+            %tr
+              %th ブランド
+              %td 
+            %tr
+              %th 商品のサイズ
+              %td
+            %tr
+              %th 商品の状態
+              %td 新品/未使用
+            %tr
+              %th 配送料の負担
+              %td 送料込み（出品者負担）
+            %tr
+              %th 発送元の地域
+              %td 他移動
+            %tr
+              %th 発送日の目安
+              %td 1-2日で発送
+        .ItemBox__iine
+= render partial: "template/footer"
+= render partial: "template/exhibit"
