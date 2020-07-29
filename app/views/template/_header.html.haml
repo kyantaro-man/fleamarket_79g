@@ -17,9 +17,9 @@
       - if user_signed_in?    #ログイン時の表示
         %ul.lists__right
           %li.btn__login
-            = link_to "マイページ", "#"
+            = link_to "マイページ", user_path(current_user.id)
           %li.btn__new
-            = link_to "ログアウト", destroy_user_session_path, method: :delete
+            = link_to "ログアウト", logout_user_path(current_user.id)
       - else                  #ログアウト時の表示
         %ul.lists__right
           %li.btn__login 
