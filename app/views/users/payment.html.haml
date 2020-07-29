@@ -14,7 +14,14 @@
         %span 支払い方法
   .UserContainer
     .UserContent
-      .UserContent__payment
+      .UserContent__title
+        支払い方法
+      .UserContent__main
+        .UserContent__single
+          クレジットカード一覧
+        = link_to  "#", class: "UserBtn" do
+          = icon('fa', 'credit-card')
+          クレジットカードを追加する
     = render "side_bar"
 = render partial: "template/footer"
 = render partial: "template/exhibit"

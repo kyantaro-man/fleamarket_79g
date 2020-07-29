@@ -35,22 +35,63 @@
     .UserContent{
       float: right;
       width: 700px;
-      background-color: #fff;
-      border-radius: 4px;
-      &__logout{
-        padding: 90px 64px;
-        max-width: 440px;
-        margin: 0 auto;
-        .LogoutBtn{
+      &__userIcon{
+        height: 250px;
+        width: 700px;
+        padding: 60px 20px;
+        background-color: #fff;
+        text-align: center;
+        border-radius: 5px;
+        a{
           display: block;
           text-decoration: none;
-          width: 100%;
+          color: #333;
+          figure{
+            margin: 0 auto;
+          }
+          h2{
+            font-weight: bold;
+          }
+        }
+        a:hover{
+          opacity: 0.6;
+        }
+      }
+      &__title{
+        background-color: #fff;
+        width: 700px;
+        text-align: center;
+        padding: 8px;
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 1px;
+        border-radius: 3px;
+      }
+      &__main{
+        padding: 90px 0;
+        background-color: #fff;
+        border-radius: 4px;
+        width: 700px;
+        .UserContent__single{
+          width: 320px;
+          margin: 0 auto;
+          font-weight: bolder;
+        }
+        .UserBtn{
+          display: block;
+          margin: 0 auto;
+          text-decoration: none;
+          width: 320px;
           line-height: 50px;
           font-size: 15px;
           color: #fff;
           background-color: #87cefa;
           text-align: center;
           border-radius: 3px;
+          margin-top: 25px;
+        }
+        .UserBtn:hover{
+          opacity: 0.7;
         }
       }
     }

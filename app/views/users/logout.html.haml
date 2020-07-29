@@ -14,8 +14,8 @@
         %span ログアウト
   .UserContainer
     .UserContent
-      .UserContent__logout
-        = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "LogoutBtn"
+      .UserContent__main
+        = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "UserBtn"
     = render "side_bar"
 = render partial: "template/footer"
 = render partial: "template/exhibit"
