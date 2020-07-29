@@ -1,0 +1,202 @@
+.wrapper {
+  width: 100vw;
+  padding-top: 24px;
+  background-color: gray;
+}
+
+.content {
+  width: 700px;
+  margin: 0 auto;
+  background-color: #fff;
+
+  &__title {
+    height: 49px;
+    border-bottom: 1px solid #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+
+    & h2 {
+      font-weight: 700;
+    }
+  }
+
+  &__card {
+    padding: 64px;
+    border-top: 1px solid #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 400;
+
+    &__inner {
+      width: 343px;
+    }
+
+    & h3 {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    &__list {
+      padding: 24px 0;
+
+      &__index {
+        position: relative;
+      }
+
+      &--pay-num {
+        margin-top: 8px;
+      }
+
+      &__remove {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        height: 24px;
+        width: 68px;
+        border: 1px solid #ea352d;
+        border-radius: 4px;
+        background-color: #fff;
+        color: #ea352d;
+      }
+    }
+
+    &__bottom {
+      width: 572px;
+      border-top: 1px solid #f5f5f5;
+      text-align: end;
+    }
+  }
+}
+
+.label {
+  font-weight: bold;
+}
+
+.form-require {
+  background-color: rgb(255, 58, 58);
+  margin-left: 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+}
+
+.input-number {
+  height: 46px;
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px 16px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.card-brands {
+  margin-top: 8px;
+  display: flex;
+}
+
+.card-brand {
+  margin-left: 8px;
+}
+
+.card-expire {
+  margin-top: 24px;
+
+  &__wrap {
+    margin-top: 8px;
+    display: inline-block;
+  }
+}
+
+.expire-text {
+  margin-right: 8px;
+}
+
+.input-expire {
+  height: 48px;
+  width: 131.5px;
+  padding: 0 16px;
+  margin-right: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.cvc-text {
+  width: 100%;
+  margin-top: 8px;
+  color: #0099e8;
+  text-align: right;
+}
+
+.form-question {
+  height: 14px;
+  width: 14px;
+  color: #fff;
+  background-color: #0099e8;
+  display: inline-block;
+  border-radius: 50%;
+  font-size: 12px;
+  line-height: 14px;
+  text-align: center;
+}
+
+.content-bottom {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.content-bottom-btn {
+  height: 48px;
+  width: 100%;
+  border: 1px solid #3ccace;
+  border-radius: 4px;
+  background-color: #3ccace;
+  color: #fff;
+  font-weight: 400;
+}
+
+
+
+.card-add {
+  padding: 24px 0;
+  text-align: center;
+
+  &__btn {
+    height: 48px;
+    border-radius: 4px;
+    background-color: #3ccace;
+    line-height: 48px;
+    color: #fff;
+  }
+}
+
+.add-btn {
+  text-decoration: none ;
+  color: #fff;
+
+  &::before {
+    font-family: "Font Awesome 5 free";
+    content: "\f09d";
+    margin-right: 16px;
+  }
+}
+
+.purchase-question {
+  display: inline-block;
+  margin-top: 40px;
+  text-decoration: none;
+  color: #0099e8;
+
+  &::after {
+    font-family: "Font Awesome 5 free";
+    content: "\f054";
+    font-weight: 900;
+    margin-left: 16px;
+  }
+}

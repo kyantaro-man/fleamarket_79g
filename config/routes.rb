@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     get 'addresses', to: 'users/registrations#new_address'
     post 'addresses', to: 'users/registrations#create_address'
   end
+
+  resources :cards, only: [:index, :new, :create, :destroy]
+  
   root 'tops#index'  #rootをitemsからtopsに変更
   resources :users, only: :show do       #マイページへのルーティング
     member do
