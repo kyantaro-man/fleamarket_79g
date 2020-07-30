@@ -36,43 +36,77 @@
       .ItemBox{
         background-color: #fff;
         text-align: center;
+        padding: 20px 40px;
+        border-radius: 3px;
         &__title{
           font-size: 25px;
           font-weight: bold;
+          margin-bottom: 15px;
         }
         &__image{
+          margin-bottom: 10px;
           &--main{
           }
-          &__sub{
-
+          &--sub{
+            display: flex;
+            justify-content: center;
           }
         }
         &__price{
+          margin-bottom: 20px;
+          h1{
+            font-size: 40px;
+            font-weight: bold;
+          }
           &--detail{
 
           }
         }
         &__info{
-
+          text-align: left;
+          margin-bottom: 25px;
         }
         &__table{
+          margin: 0 auto;
           table{
+            font-size: 15px;
             tr{
               th{
-
+                background-color: #eee;
+                border: 1px solid #baba;
+                height: 55px;
+                width: 150px;
+                text-align: center;
               }
               td{
-
+                padding-left: 20px;
+                border: 1px solid #baba;
+                width: 500px;
+                text-align: left;
               }
             }
           }
         }
-        &__optinal{
+        &__optional{
+          margin-top: 25px;
+          display: flex;
+          justify-content: space-between;
           &--like{
-
+            color: #87cefa;
+            border: 1px solid orange;
+            padding: 5px;
+            font-size: 14px;
+            border-radius: 15px;
           }
           &--bad{
-
+            .badBtn{
+              padding: 7px;
+              text-decoration: none;
+              color: #333;
+              font-size: 14px;
+              border: 1px solid #333;
+              border-radius: 5px;
+            }
           }
         }
       }
@@ -84,6 +118,7 @@
         background-color: #fff;
         text-align: center;
         padding: 30px;
+        border-radius: 3px;
         &__textarea{
           max-width: 100%;
           width: 100%;
