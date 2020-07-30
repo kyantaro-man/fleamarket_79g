@@ -7,7 +7,6 @@ class CardsController < ApplicationController
       Payjp.api_key = '秘密鍵'
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @card_information = customer.cards.retrieve(@card.card_id)
-
       @card_brand = @card_information.brand
       case @card_brand
       when "Visa"
@@ -68,4 +67,5 @@ class CardsController < ApplicationController
   def set_card
     @card = Card.find_by(user_id: current_user.id) if Card.where(user_id: current_user.id).present?
   end
+
 end

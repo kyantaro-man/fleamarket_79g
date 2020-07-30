@@ -72,7 +72,7 @@
           発送元・お届け先住所変更
           = icon('fa', 'angle-right')
       %li
-        = link_to payment_user_path, class: "UserSideBarNav__list--item" do
+        = link_to user_cards_path(current_user.id), class: "UserSideBarNav__list--item" do
           支払い方法
           = icon('fa', 'angle-right')
       %li
@@ -88,6 +88,6 @@
           電話番号の確認
           = icon('fa', 'angle-right')
       %li
-        = link_to logout_user_path, class: "UserSideBarNav__list--item" do
+        = link_to logout_user_path(current_user.id), class: "UserSideBarNav__list--item" do
           ログアウト
           = icon('fa', 'angle-right')
