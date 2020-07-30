@@ -24,11 +24,11 @@
         .ItemBox__image
           .ItemBox__image--main
             = image_tag "photo/photo_3.jpg", size:"360x360", alt: "item-image"
-            %ul
-              %li
-                = image_tag "photo/photo_1.jpg", size:"90x90", alt: "item-image"
-              %li
-                = image_tag "photo/photo_L4.jpg", size:"60x60", alt: "item-image"
+          %ul.ItemBox__image--sub
+            %li
+              = image_tag "photo/photo_1.jpg", size:"90x90", alt: "item-image"
+            %li
+              = image_tag "photo/photo_L4.jpg", size:"90x90", alt: "item-image"
         .ItemBox__price
           %h1 ¥10000
           .itemBox__price--detail
@@ -65,7 +65,8 @@
         .ItemBox__optional
           .ItemBox__optional--like
             = icon('fa', 'star')
-            お気に入り 0
+            お気に入り
+            %span 0
           .ItemBox__optional--bad
             = link_to "#", class: "badBtn" do
               = icon('fa', 'flag')
@@ -76,7 +77,7 @@
         .CommentForm__noticeMsg
           相手のことを考え丁寧なコメントを心がけましょう。
           %br
-          不快な言葉遣いなどは利用制限や退会処分となることがあります
+          不快な言葉遣いなどは利用制限や退会処分となることがあります。
         %button{type: "submit", class: "CommentForm__submit"}
           = icon('fa','comment')
           コメントする
