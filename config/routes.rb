@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'addresses', to: 'users/registrations#new_address'
     post 'addresses', to: 'users/registrations#create_address'
+    get 'cards', to: 'users/registrations#new_card'
+    post 'cards', to: 'users/registrations#create_card'
   end
   
   root 'tops#index'  #rootをitemsからtopsに変更

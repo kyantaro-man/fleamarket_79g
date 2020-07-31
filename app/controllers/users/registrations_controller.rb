@@ -28,9 +28,43 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render :new_address and return
     end
     @user.build_address(@address.attributes)                                           #バリデーションが完了した情報とsessionで保持していた情報をユーザー情報に代入
-    @user.save
-    session["devise.regist_data"]["user"].clear                                        #clearでsessionを削除
-    sign_in(:user, @user)
+    session["address"] = @address.attributes
+    @card = @user.cards.build
+    #以下の記述はcreate_cardに移しました
+    # @user.save
+    # session["devise.regist_data"]["user"].clear                                        #clearでsessionを削除
+    # sign_in(:user, @user)
+    render :new_card
+  end
+
+  def create_card
+    @user = User.new(session["devise.regist_data"]["user"])
+    @address = Address.new(session["address"])
+    Payjp.api_key = '秘密鍵'
+    if params['token'].blank?
+      redirect_to action: "new"
+    else
+      customer = Payjp::Customer.create(
+        description: 'test', # 顧客情報の概要（なくてもいい）
+        email: @user.email,
+        card: params['token'] # 顧客情報とカード情報のトークンを紐付ける
+      )
+    end
+    @card = Card.new
+    @card[:customer_id] = customer.id
+    @card[:card_id] = customer.default_card
+    unless @card.valid?
+      flash.now[:alert] = @card.errors.full_messages
+      render :new_card and return
+    end
+    @user.build_address(@address.attributes)
+    @user.cards.build(@card.attributes)
+    if @user.save
+      session["devise.regist_data"]["user"].clear                                        #clearでsessionを削除
+      sign_in(:user, @user)
+    else
+      render :new
+    end
   end
 
 
@@ -39,6 +73,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def address_params
     params.require(:address).permit(:zip_code, :prefecture, :municipality, :address, :apartment_name, :phone_number)
   end
+
+  def card_params
+    params.permit(:authenticity_token, :token)
+  end
+  # def card_params
+  #   params.permit(:authenticity_token, :token)
+  # end
 
   # POST /resource
   # def create
