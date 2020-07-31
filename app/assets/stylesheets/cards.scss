@@ -5,8 +5,8 @@
 }
 
 .content {
+  float: right;
   width: 700px;
-  margin: 0 auto;
   background-color: #fff;
 
   &__title {
@@ -161,8 +161,6 @@
   font-weight: 400;
 }
 
-
-
 .card-add {
   padding: 24px 0;
   text-align: center;
@@ -177,7 +175,7 @@
 }
 
 .add-btn {
-  text-decoration: none ;
+  text-decoration: none;
   color: #fff;
 
   &::before {

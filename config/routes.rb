@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'addresses', to: 'users/registrations#new_address'
     post 'addresses', to: 'users/registrations#create_address'
+    get 'cards', to: 'users/registrations#new_card'
+    post 'cards', to: 'users/registrations#create_card'
   end
-
-  resources :cards, only: [:index, :new, :create, :destroy]
   
   root 'tops#index'  #rootをitemsからtopsに変更
   resources :users, only: :show do       #マイページへのルーティング
@@ -15,7 +15,11 @@ Rails.application.routes.draw do
       get 'logout'                       #ログアウト画面へのルーティング
       get 'payment'                      #支払い方法画面へのルーティング
     end
+
+    resources :cards, only: [:index, :new, :create, :destroy]
+
   end
+
   resources :items, only: :show
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
