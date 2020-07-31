@@ -35,16 +35,6 @@
             (税込み)
             送料込み
         .ItemBox__buy
-          -# - if user_signd_in? && current_usr.id != item.user_id     ログイン状態かつ出品者でない場合、購入ボタンを表示
-          -#   = link_to "#", class: "ItemBox__buy--btn" do
-          -#     購入する
-          -# - elsif current_user.id == item.user_id                   出品者の場合、削除編集ボタンを表示
-          -#   = link_to "#", class: "ItemBox__buy--btn" do
-          -#     編集・削除する
-          -# - else                                                     ログインしていない場合、ログインボタンを表示
-            -# = link_to user_session_path, class: "ItemBox__buy--btn" do
-            -#   ログインする
-          -# サーバーサイド実装時に削除する
           = link_to "#", class: "ItemBox__buy--btn" do
             購入する
         .ItemBox__info
