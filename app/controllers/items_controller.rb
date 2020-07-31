@@ -5,23 +5,21 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @item_image = @item.item_images.build
+    @item.images.new
   end
 
   def create
-    Item.create(item_params)
+    @item = Item.new(item_params)
     if @item.save
+      redirect_to root_path
+    else
 
-      params[:item_images]['image'].each do |img|
-        @item_image = @item.item_images.create(:image => img, :item_id => @item.id)
-      end
-
-      redirect_to item_path(@item.id)
-    end
+      render :new
+     end
   end
 
   private
   def item_params
-    params.require(:item).permit(:item_name, :category_id, :brand, :condition_id, :postageplayer_id, :shippingdate_id, :price, :introduction, :buyer_id, :prefecture_id, item_images_attributes: [:id, :item_id, :image])
+    params.require(:item).permit(:item_name, :category_id, :brand, :condition_id, :postageplayer_id, :shippingdate_id, :price, :introduction, :buyer_id, :prefecture_id, images_attributes: [:src])
   end  
 end
