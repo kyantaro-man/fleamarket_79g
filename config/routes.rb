@@ -21,5 +21,5 @@ Rails.application.routes.draw do
 
   end
 
-  rails.org/routing.html
+  # rails.org/routing.html
 end
