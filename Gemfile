@@ -6,7 +6,7 @@ ruby '2.6.5'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0'
 # Use mysql as the database for Active Record
-gem 'mysql2', '>= 0.4.4'
+gem 'mysql2', '>= 0.5.3'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -66,6 +66,16 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :production do
   gem 'unicorn'
 end
+
+
+gem 'jp_prefecture'
+
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'pry-rails'
+gem 'fog-aws'
+gem 'seed-fu'
+gem 'active_hash'
 
 gem 'devise'
 gem "haml-rails", ">= 1.0", '<= 2.0.1'

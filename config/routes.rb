@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
   
   root 'tops#index'  #rootをitemsからtopsに変更
+  resources :items, only: [:index, :new, :create, :show]
   resources :users, only: :show do       #マイページへのルーティング
     member do
       get 'logout'                       #ログアウト画面へのルーティング
@@ -20,7 +21,5 @@ Rails.application.routes.draw do
 
   end
 
-  resources :items, only: :show
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
+  # rails.org/routing.html
 end
