@@ -14,12 +14,7 @@
         .Sell-contents__text
           10枚までアップロードできます。
           .Sell-contents__imageBox
-            -# =icon('fas','camera',class: "icon__camera")
-            -# .Sell-contents__imageBox-image
-            -#   =icon('fas','camera',class: "icon__camera")
-            -# %p
-            -#   クリックしてファイルをアップロード
-            -# %label{for: "img-file”}
+            
             #image-box
               #previews
                 - if @item.persisted?
@@ -31,13 +26,15 @@
                   %br
                   %span.js-remove
                     削除
-          
+                - if @item.persisted?
+                  = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+              - if @item.persisted?
+                .js-file_group{"data-index" => "#{@product.images.count}"}
+                  = file_field_tag :src, name: "item[images_attributes][#{@item.images.count}][src]", class: 'js-file'
+                  .js-remove 
+                    削除
 
-            -# %p 
-            -#   出品者名
-            -#   %span.require 必須
-            -# = f.text_field :seller
-            -# %br
+            
 
             -# ____商品名__________________
     .Container

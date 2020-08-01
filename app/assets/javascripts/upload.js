@@ -47,34 +47,18 @@ $(document).on('turbolinks:load', ()=> {
   });
 
   $('#image-box').on('click', '.js-remove', function() {
+    const targetIndex = $(this).parent().data('index');
+    // 該当indexを振られているチェックボックスを取得する
+    const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
+    // もしチェックボックスが存在すればチェックを入れる
+    if (hiddenCheck) hiddenCheck.prop('checked', true);
+
     $(this).parent().remove();
+    $(`img[data-index="${targetIndex}"]`).remove();
+    
     // 画像入力欄が0個にならないようにしておく
     if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
   });               
 });
 
-      //読み込みが完了すると、srcにfileのURLを格納
-      // fileReader.onloadend = function() {
-      //   var src = fileReader.result
-      //   var html =  `<li class="item-image-container__unit--preview" >
-      //                 <div class="item-image-container__unit--caption">
-      //                   <img src="${src}" width="300px" height="300px">
-      //                 </div>
-      //                 <div class="image-option">
-      //                   <div  class="image-option__list">
-      //                     <div class="image-option__list--tag">編集</div>
-      //                   </div>
-      //                   <div class="image-option__list">
-      //                     <a class="image-option__list--tag">削除</a>
-      //                   </div>
-      //                 </div>
-      //               </li>`
-      //   //ulタグの下にhtmlをappendしています。
-      //   $(html).appendTo(".item-image-container__unit ul").trigger("build");
-
-      // };
-      //DataTransfer構造のデバッグ
-    //   console.log(dataBox);
-    //   if(dataBox.items.length > 4){
-    //     return false;
-    //  }
+ 
