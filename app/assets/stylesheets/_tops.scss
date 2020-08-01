@@ -1,0 +1,202 @@
+@mixin inner__image--icon {
+  .appBtn{
+    width:  250px;
+    height: 70px;
+    margin: 15px 0;
+  }
+  .googleBtn{
+    width:  280px;
+    height: 100px;
+  } 
+}
+
+.main{
+  height:             600px;
+  width:              100vw;
+  position:           relative;
+  background-image:   image-url("material/pict/bg-mainVisual-pict_pc.jpg");
+  background-size:    cover;
+
+  &__image--text{
+    position:     absolute;
+    top:          200px;
+    left:         60px;
+    h1{
+      font-size:      45px;
+      margin-bottom:  20px;
+      text-shadow:    0 0 5px rgba(0,0,0,0.4);
+      font-size:      60px;
+      line-height:    1.2;
+      color:        white;
+    }
+    p{
+      font-size:    18px;
+      line-height:  30px;
+      text-shadow:   0 0 5px rgba(0,0,0,0.4);
+      line-height:  1.8;
+      color:      white;
+      margin:       16px 0 0 0;
+    }
+    @include  inner__image--icon ();
+  }
+}
+
+.introduction{
+  height:             600px;
+  width:              100vw;
+  margin-top:         80px;
+
+  &__title{
+    font-size:         28px;
+    font-weight:       bold;
+    text-align:        center;
+    margin-bottom:     25px;
+    padding-bottom:    15px;
+  }
+  &__contents{
+    width:            100%;
+    display:          flex;
+    justify-content:  space-around;
+    margin:           0 auto ;
+    &--content{
+      width:      20%;
+      margin:     0 auto;
+      position:   relative;
+
+      .number{
+        position:         absolute;
+        top:              0;
+        left:             0;
+        width:            50px;
+        height:           50px;
+        color:            #fff;
+        font-size:        24px;
+        font-weight:      bold;
+        background-color: #87CEFA;
+        border-radius:    2px;
+        line-height:      50px;
+        text-align:       center;
+      }
+      h1{
+        text-align:       center;
+        font-size:        26px;
+        font-weight:      bold;
+        margin:           20px 0 40px;
+        span{
+          color:        #87CEFA;
+        }
+      }
+      .center{
+        text-align: center;
+      }
+    }
+  }
+}
+
+.second-introduction{
+  height:             600px;
+  width:              100vw;
+  position:           relative;
+  background-image:   image-url("material/pict/bg-topMiddleDl-pict.jpg");
+  background-size:    cover;
+  margin-top: 80px;
+
+  &__image--text{
+    position:     absolute;
+    top:          200px;
+    left:         60px;
+    h1{
+      font-size:      45px;
+      margin-bottom:  20px;
+      text-shadow:    0 0 5px rgba(0,0,0,0.4);
+      font-size:      60px;
+      line-height:    1.2;
+      color:        white;
+    }
+    p{
+      font-size:    18px;
+      line-height:  30px;
+      text-shadow:  0 0 5px rgba(0,0,0,0.4);
+      line-height:  1.8;
+      color:      white;
+      margin:       16px 0 0 0;
+    }
+    @include  inner__image--icon ();
+  }
+}
+
+.feature{
+  height:       600px;
+  width:        100vw;
+  margin-top:   80px;
+
+  &__title{
+    font-size:      28px;
+    font-weight:    bold;
+    text-align:     center;
+    margin-bottom:  25px;
+    padding-bottom: 15px;
+  }
+  &__contents{
+    width:            100%;
+    display:          flex;
+    justify-content:  space-evenly;
+    margin:           0 auto;
+    padding:          0 30px;
+    &--content{
+      width:          20%;
+      margin:         0px 30px;
+      position:       relative;
+
+      h1{
+        text-align:       center;
+        font-size:        26px;
+        font-weight:      bold;
+        margin:           20px 0 40px;
+      }
+      .center{
+        text-align:       center;
+      }
+    }
+  }
+}
+
+.border_bottom{
+  border:         3px solid #87CEFA;
+  margin:         10px auto 50px;
+  width:          90px;
+}
+
+.banner{
+  height:             600px;
+  width:              100vw;
+  position:           relative;
+  background-image:   image-url("material/pict/bg-appBanner-pict.jpg");
+  background-size:    cover;
+
+  &__image--text{
+    position:     absolute;
+    top:          200px;
+    left:         60px;
+
+    h1{
+      font-size:      24px;
+      margin-bottom:  20px;
+      text-shadow:    0 0 5px rgba(0,0,0,0.4);
+      line-height:    1.4;
+      color:        white;
+      text-align:     center;
+      font-weight:    bold;
+    }
+    p{
+      font-size:      40px;
+      text-shadow:    0 0 5px rgba(0,0,0,0.4);
+      line-height:    1.8;
+      color:        white;
+      margin:         16px 0 0 0;
+      text-align:     center;
+    }
+      @include  inner__image--icon ();
+  }
+}
+

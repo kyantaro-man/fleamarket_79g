@@ -18,8 +18,13 @@ class ItemsController < ApplicationController
      end
   end
 
+  def show    #商品詳細ページ
+    # @item = Item.find(params[:id])   商品の投稿ができてから😄
+  end
+
   private
   def item_params
     params.require(:item).permit(:item_name, :category_id, :brand, :condition_id, :postageplayer_id, :shippingdate_id, :price, :introduction, :buyer_id, :prefecture_id, images_attributes: [:src])
   end  
+  
 end

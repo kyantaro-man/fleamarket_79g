@@ -1,0 +1,17 @@
+.exhibition{
+  width:            150px;
+  height:           150px;
+  background-color: #87CEFA;
+  border-radius:    5px;
+  position:         fixed;
+  right:            50px;
+  bottom:           50px;
+  p{
+    color:          #fff;
+    font-size:      20px;
+    margin:         10px 0 0 35px;
+  }
+  img{
+    margin:         20px 0 0 33px;
+  }
+}

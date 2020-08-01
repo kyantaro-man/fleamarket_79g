@@ -1,0 +1,98 @@
+= render partial: "template/header"
+.UserWrapper
+  .UserHeader
+    %ol.UserHeader__list
+      %li
+        =link_to root_path do
+          フリマ
+          = icon('fa', 'angle-right')
+      %li
+        =link_to user_path(current_user.id) do
+          マイページ
+          = icon('fa', 'angle-right')
+      %li
+        %span 支払い方法
+  .UserContainer
+    .content
+      .content__title
+        %h2 クレジットカード情報入力
+      .content__card
+        .content__card__inner
+          = form_with url: user_cards_path, method: :post, html: { name: "inputForm" } do |f|
+            = f.label :カード番号, class: "label"
+            %span.form-require 必須
+            = f.text_field :card_number, type: "text", class: "input-number", placeholder: "半角数字のみ", maxlength: "16"
+            %ul.card-brands
+              %li.card-brand
+                = image_tag "card-logos/visa.gif", height: "30", width: "40"
+              %li.card-brand
+                = image_tag "card-logos/master.gif", height: "30", width: "40"
+              %li.card-brand
+                = image_tag "card-logos/jcb.gif", height: "30", width: "40"
+              %li.card-brand
+                = image_tag "card-logos/amex.gif", height: "30", width: "40"
+              %li.card-brand
+                = image_tag "card-logos/diners.gif", height: "30", width: "40"
+              %li.card-brand
+                = image_tag "card-logos/dc.gif", height: "30", width: "40"
+            .card-expire
+              = f.label :有効期限, class: "label"
+              %span.form-require 必須
+              %br
+              .card-expire__wrap
+                = f.select :exp_month, [["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]],{} , class: "input-expire"
+                %span.expire-text 月
+                %br
+              .card-expire__wrap
+                = f.select :exp_year, [["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029],["30",2030],["31",2031]],{} , class: "input-expire"
+                %span.expire-text 年
+            .card-expire
+              = f.label :セキュリティコード, class: "label"
+              %span.form-require 必須
+              = f.text_field :cvc, type: "text", class: "input-number", placeholder: "カード背面4桁もしくは3桁の番号", minlength: "3", maxlength: "4"
+              .cvc-text
+                %span.form-question ?
+                カード裏面の番号とは？
+            .content-bottom#card_token
+              = f.submit "追加する", class: "content-bottom-btn", id: "token"
+    = render "users/side_bar"
+= render partial: "template/footer"
+= render partial: "template/exhibit"
+
+
+:javascript
+  document.addEventListener(
+    "DOMContentLoaded", (e) => {
+      Payjp.setPublicKey('公開鍵');
+      const btn = document.getElementById("token");
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+
+
+        const card = {
+          number: document.getElementById("card_number").value,
+          cvc: document.getElementById("cvc").value,
+          exp_month: document.getElementById("exp_month").value,
+          exp_year: document.getElementById("exp_year").value
+        };
+
+
+        Payjp.createToken(card, (status, response) => {
+          if (status === 200) {
+            $("#card_number").removeAttr("name");
+            $("#cvc").removeAttr("name");
+            $("#exp_month").removeAttr("name");
+            $("#exp_year").removeAttr("name");
+            $("#card_token").append(
+              $('<input type="hidden" name="token">').val(response.id)
+            );
+            document.inputForm.submit();
+            alert("登録が完了しました");
+          } else {
+            alert("カード情報が正しくありません。");
+          };
+        });
+      });
+    }, 
+    false
+  );

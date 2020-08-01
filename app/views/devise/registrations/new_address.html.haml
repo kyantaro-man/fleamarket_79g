@@ -1,0 +1,41 @@
+.RegistrationWrapper
+  .RegistrationNew
+    .RegistrationTitle
+      %h2 住所登録
+    .RegistrationForm
+      = form_for(@address, url: addresses_path, method: :post) do |f|
+        = render "devise/shared/error_messages", resource: @address
+        .FormGroup
+          = f.label :zip_code, "郵便番号"
+          %span.FormGroup__require 必須
+          %br/
+          = f.text_field :zip_code, class:'FormGroup__input'
+        .FormGroup
+          = f.label :prefecture, "都道府県"
+          %span.FormGroup__require 必須
+          %br/
+          = f.text_field :prefecture, class:'FormGroup__input'
+        .FormGroup
+          = f.label :municipality, "市区町村"
+          %span.FormGroup__require 必須
+          %br/
+          = f.text_field :municipality, class:'FormGroup__input'
+        .FormGroup
+          = f.label :address, "番地"
+          %span.FormGroup__require 必須
+          %br/
+          = f.text_field :address, class:'FormGroup__input'
+        .FormGroup
+          = f.label :apartment_name, "建物名"
+          %span.FormGroup__optional 任意
+          %br/
+          = f.text_field :apartment_name, class:'FormGroup__input'
+        .FormGroup
+          = f.label :phone_number, "電話番号"
+          %span.FormGroup__optional 任意
+          %br/
+          = f.text_field :phone_number, {placeholder:"ハイフンなしで入力してください", class:'FormGroup__input'}
+        .actions
+          = f.submit "登録", class: 'FormBtn'
+      -# = render "devise/shared/links"
+

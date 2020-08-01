@@ -1,0 +1,121 @@
+= render partial: "template/header"
+
+.main
+  .main__image--text
+    %h1
+      人生を変えるフリマアプリ
+    %p 
+      FURIMAはだれでもかんたんに出品・購入できる
+      %br
+      フリマアプリです
+
+    .inner__image--icon
+      = link_to "#", class: "icon" do
+        = image_tag 'material/app/App_Store_Badge.png',class: "appBtn"
+      = link_to "#", class: "icon" do
+        = image_tag 'material/app/google-play-badge.png',class: "googleBtn"
+
+.introduction
+  .introduction__title
+    FURIMAが選ばれる３つの理由
+  .border_bottom
+
+  .introduction__contents
+    .introduction__contents--content
+      .number 1
+      = image_tag "material/pict/pict-reason-01.jpg", height: "350", with: "500"
+      %h1
+        %span 
+          3分
+        ですぐに出品
+      %p
+        スマホで入力するだけで簡単に出品できる！
+    .introduction__contents--content
+      .number 2
+      = image_tag "material/pict/pict-reason-02.jpg", height: "350", with: "500"
+      %h1
+        %span 
+          シンプル
+        で使いやすい
+      %p
+        めんどくさい入力は必要なく、検索も購入もスムーズ！
+    .introduction__contents--content
+      .number 3
+      = image_tag "material/pict/pict-reason-03.jpg", height: "350", with: "500"
+      %h1
+        手数料
+        %span 
+          業界最安
+      %p.center
+        最大3%でお得に出品&購入！
+      
+.second-introduction
+  .second-introduction__image--text
+    %h1
+      会員数日本一
+    %p 
+      FURIMAは、フリマアプリ で最も人気。
+      %br
+      出品・購入回数も業界最多です！
+      %br
+      欲しかったあの商品に出会えるかもしれません。
+
+    .inner__image--icon
+      = link_to "#", class: "icon" do
+        = image_tag 'material/app/App_Store_Badge.png',class: "appBtn"
+      = link_to "#", class: "icon" do
+        = image_tag 'material/app/google-play-badge.png',class: "googleBtn"
+
+.feature
+  .feature__title
+    FURIMAが選ばれる３つの理由
+  .boder_bottom
+  .feature__contents
+    .feature__contents--content 
+      = image_tag "material/icon/icon-01.png", height: "350", with: "500"
+      %h1
+        簡単に売り買いできる
+      %p
+        スマホひとつで、いつでもどこでも簡単
+        に出品・購入が可能！
+    .feature__contents--content
+      = image_tag "material/icon/icon-02.png", height: "350", with: "500"
+      %h1
+        売上金は即日振込みに対応
+      %p
+        午前９時までに振込みを依頼いただければ、
+        翌日に指定の口座に入金いたします！
+    .feature__contents--content
+      = image_tag "material/icon/icon-03.png", height: "350", with: "500"
+      %h1
+        様々な支払いに対応
+      %p.center
+        お支払いは、クレジットカードだけで
+        なく、ポイントや売上金など多彩な方法
+        があります。
+
+.pick_up
+  .pick_up__category
+    %h1 ピックアップカテゴリー
+    %h1.color 新規投稿商品
+    = render partial: "template/items"
+  .pick_up__brand
+    %h1 ピックアップブランド
+    %h1.color アーカイバ
+    = render partial: "template/items"
+
+.banner
+  .banner__image--text
+    %h1
+      だれでもかんたん、人生を変えるフリマアプリ 
+    %p 
+      今すぐ無料ダウンロード！
+      
+    .inner__image--icon
+      = link_to "#", class: "icon" do
+        = image_tag 'material/app/App_Store_Badge.png',class: "appBtn"
+      = link_to "#", class: "icon" do
+        = image_tag 'material/app/google-play-badge.png',class: "googleBtn"
+
+= render partial: "template/footer"
+= render partial: "template/exhibit"
