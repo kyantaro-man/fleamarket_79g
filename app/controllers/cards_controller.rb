@@ -4,7 +4,7 @@ class CardsController < ApplicationController
 
   def index
     if @card.present?
-      Payjp.api_key = '秘密鍵'
+      Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @card_information = customer.cards.retrieve(@card.card_id)
       @card_brand = @card_information.brand
@@ -31,7 +31,7 @@ class CardsController < ApplicationController
   end
 
   def create
-    Payjp.api_key = '秘密鍵'
+    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
     
     if params['token'].blank?
       redirect_to action: "new"
@@ -52,7 +52,7 @@ class CardsController < ApplicationController
   end
 
   def destroy
-    Payjp.api_key = '秘密鍵'
+    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
     customer = Payjp::Customer.retrieve(@card.customer_id)
     customer.delete
     if @card.destroy
