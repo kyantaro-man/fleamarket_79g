@@ -29,4 +29,85 @@
       }
     }
   }
+  .CategoryMain{
+    width: 720px;
+    margin: 0 auto;
+    .CategoryParents{
+      padding: 20px 25px 0;
+      &__index{
+        background-color: #fff;
+        display: inline-block;
+        font-size: 15px;
+        padding: 10px 30px;
+        border: 2px solid #baba;
+        margin-bottom: 5px;
+        margin-right: 10px;
+        text-decoration: none;
+        color: #333;
+        border-radius: 8px;
+      }
+      &__index:hover{
+        background-color: #87cefa;
+        color: #fff;
+      }
+    }
+    .CategoryBox{
+      padding: 16px;
+      &__title{
+        display: block;
+        text-decoration: none;
+        background-color: #87cefa;
+        border-radius: 5px 5px 0 0;
+        color: #fff;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 15px;
+      }
+      .CategoryContents{
+        background-color: #fff;
+        padding: 24px 30px 10px;
+        .CategoryContent{
+          &__title{
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+          }
+        }
+        &__list{
+          padding: 0 0 0 10px;
+          .CatItems{
+            .CatItem{
+              margin: 8px 0;
+              display: inline-block;
+              width: calc(100% / 2);
+              float: left;
+              .ItemName{
+                text-decoration: none;
+                color: #ffb340;
+                font-size: 14px;
+              }
+              .ItemName:hover{
+                text-decoration: underline;
+              }
+            }
+          }
+          .clearfix:after{        /*CatItemに使ったfloatの表示崩れの修正に使用*/
+            content: "";         /* 擬似要素を実体化 */
+            clear: both;        /* floatを解除する */
+            display: block;     /* ブロック要素にする */
+          }
+        }
+      }
+      .CategoryBox__topBtn{
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 0 0 5px 5px;
+        .TopBtn{
+          text-decoration: none;
+          color: #333;
+          font-size: 20px;
+        }
+      }
+    }
+  }
 }

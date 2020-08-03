@@ -8,22 +8,29 @@
           = icon('fa', 'angle-right')
       %li
         %span カテゴリ一覧
-  .CtegoryMain
+  .CategoryMain
     .CategoryParents
       - @parents.each do |parent|
-        .CategoryParents__index
+        = link_to "#", class: "CategoryParents__index" do
           = parent.name
     - @parents.each do |parent|
-      .CtategoryBox
-        .CategoryBox__title
+      .CategoryBox
+        = link_to "#", class: "CategoryBox__title" do
           = parent.name
         - parent.children.each do |child|
-          .CategoryContent
-            .CategoryContent__title
-              = child.name
-            .CategoryContent__items
-              - child.children.each do |category|
-                .CategorItem
-                  = category.name
+          .CategoryContents
+            .CategoryContent
+              = link_to "#", class: "CategoryContent__title" do
+                = child.name
+            .CategoryContents__list
+              %ul.CatItems.clearfix
+                - child.children.each do |category|
+                  %li.CatItem
+                    = link_to "#", class: "ItemName" do
+                      = category.name
+        .CategoryBox__topBtn
+          = link_to "#", class: "TopBtn" do
+            = icon('fa', 'arrow-up')
+            ページトップへ
 = render partial: "template/footer"
 = render partial: "template/exhibit"
