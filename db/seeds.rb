@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+#categoryテーブルにデータを入れるためにターミナルで rails db:seed とコマンドしてください。
+require "csv"
+
+CSV.foreach('db/category.csv') do |info|
+  Category.create(name: info[0], ancestry: info[1])
+end
