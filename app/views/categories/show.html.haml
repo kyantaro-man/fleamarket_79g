@@ -1,0 +1,29 @@
+.header
+  .header__main
+    .header__box
+      .header__logo
+        = link_to (image_tag "material/logo/logo.png", height: "50", width: "150")
+      %form.searchBox
+        %input.input{type: "text", placeholder: "キーワードで検索"}
+        = button_tag type: 'submit', class: "submit" do
+          = icon('fa', 'search',class: "search__Icon")
+    .header__navi
+      %ul.lists__left
+        %li.btn__category 
+          カテゴリー
+          = render partial: 'category_list'
+        %li.btn__brand 
+        ブランド
+          
+      - if user_signed_in?    #ログイン時の表示
+        %ul.lists__right
+          %li.btn__login
+            = link_to "マイページ", user_path(current_user.id)
+          %li.btn__new
+            = link_to "ログアウト", logout_user_path(current_user.id)
+      - else                  #ログアウト時の表示
+        %ul.lists__right
+          %li.btn__login 
+            = link_to "ログイン", user_session_path
+          %li.btn__new
+            = link_to "新規登録", new_user_registration_path

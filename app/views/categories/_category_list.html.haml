@@ -1,0 +1,8 @@
+.CategoryList{style: 'display: none'}
+  %ul.CategoryList__parents
+    - @parents.each do |parent|
+      %li.ParentCategory
+        = link_to "#", id: "#{parent.id}" do
+          = parent.name
+  %ul.CategoryList__children
+  %ul.CategoryList__grandchildren
