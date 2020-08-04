@@ -33,21 +33,20 @@ class ItemsController < ApplicationController
     #Payjpから顧客情報を取得しています
     customer = Payjp::Customer.retrieve(@card.customer_id)
     @card_information = customer.cards.retrieve(@card.card_id)
-      @card_brand = @card_information.brand
-      case @card_brand
-      when "Visa"
-        @card_src = "visa.gif"
-      when "MasterCard"
-        @card_src = "master.gif"
-      when "JCB"
-        @card_src = "jcb.gif"
-      when "American Express"
-        @card_src = "amex.gif"
-      when "Diners Club"
-        @card_src = "diners.gif"
-      when "Discover"
-        @card_src = "dc.gif"
-      end
+    @card_brand = @card_information.brand
+    case @card_brand
+    when "Visa"
+      @card_src = "visa.gif"
+    when "MasterCard"
+      @card_src = "master.gif"
+    when "JCB"
+      @card_src = "jcb.gif"
+    when "American Express"
+      @card_src = "amex.gif"
+    when "Diners Club"
+      @card_src = "diners.gif"
+    when "Discover"
+      @card_src = "dc.gif"
     end
   end
   #↑同じ記述がcardsコントローラにもあります
