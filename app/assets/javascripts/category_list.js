@@ -13,22 +13,25 @@ $(function(){
                 </li>`
     return html;
   }
-
-
 // 親カテゴリのリストをマウスのオンオフで表示非表示にする
   $(".btn__category").hover(
+    //マウスオンされた時の処理
     function(){
       $(".CategoryList:not(:animated)", this).slideDown(100);
     },
+    //マウスオフされた時の処理
     function(){
+      $(".ChildCategory").remove();                       //出ている子カテゴリのリストを消します
+      $(".GrandchildCategory").remove();                  //出ている孫カテゴリのリストを消します
       $(".CategoryList").slideUp(100);
     }
   );
   //親カテゴリのリストにマウスオンされた時、子カテゴリのリストを生成する処理
   $("li.ParentCategory a").on("mouseover",
     function(){
-      let id = $(this).attr('id')                         //親亜kてゴリのidを取得
+      let id = $(this).attr('id')                         //マウスオンされた親カテゴリのidを取得
       $(".ChildCategory").remove();                       //出ている子カテゴリのリストを消します
+      $(".GrandchildCategory").remove();                  //出ている孫カテゴリのリストを消します
       $.ajax({
         type: 'GET',
         url: '/categories/new',
@@ -44,10 +47,10 @@ $(function(){
     }
   );
   //子カテゴリのリストにマウスオンされた時、孫カテゴリのリストを生成する処理
-  $(document).on("mouseover", "li.ChildCategory a",
+  $(document).on("mouseover", "li.ChildCategory a",           //動的に生成された要素なので、第二引数で要素を指定する。
     function(){
-      let id = $(this).attr('id')                             //親亜kてゴリのidを取得
-      $(".GrandchildCategory").remove();                      //出ている子カテゴリのリストを消します
+      let id = $(this).attr('id')                             //マウスオンされた子カテゴリのidを取得
+      $(".GrandchildCategory").remove();                      //出ている孫カテゴリのリストを消します
       $.ajax({
         type: 'GET',
         url: '/categories/new',
@@ -62,6 +65,4 @@ $(function(){
       })
     }
   );
-
-
 });
