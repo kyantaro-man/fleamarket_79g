@@ -22,16 +22,19 @@
         %h2.BuyForm-title 購入内容の確認
       %section.BuyForm-box
         .Item
-          = image_tag "photo/photo_1.jpg", class: "Item-image"
+          = image_tag(@item.images[0].src.url, class: "Item-image")
           .Item-text
-            %p.Item-name MacBook
+            %p.Item-name
+              = @item.item_name
             %p.Item-price
               %span.Item-price__left 送料込み(税込)
-              %span.Item-price__right ￥1.980
+              %span.Item-price__right
+                = number_to_currency(@item.price, format: "%u%n", unit: "￥", precision: 0)
       %section.BuyForm-box.Money
         .Money__top
           %span.Money-text 支払い金額
-          %span.Money-price ￥1,980
+          %span.Money-price
+            = number_to_currency(@item.price, format: "%u%n", unit: "￥", precision: 0)
         .Money__bottom
           %p ポイントの使用
           %p 所持ポイント：P0
@@ -41,8 +44,8 @@
           = link_to "変更する", "#", class: "Pay-link"
         .Pay__bottom
           %ul
+            クレジットカード
             %li.content__card__list
-              クレジットカード
               .card-figure
                 = image_tag "card-logos/#{@card_src}", height: "20", width: "26", alt: @card_brand, id: "card_image"
               .content__card__list--pay-num
@@ -56,9 +59,15 @@
           %h3.Address-text 配送先
           = link_to "変更する", "#", class: "Address-link"
         .Address__bottom
-          %p 〒 111-1111
-          %p 東京都新宿区
-          %p 名前
+          = @address.zip_code
+          %br
+          = @address.prefecture
+          = @address.municipality
+          = @address.address
+          = @address.apartment_name
+          %br
+          = @user.family_name
+          = @user.first_name
       %section.BuyForm-box
         .Submit
           = f.submit "購入する", class: "Submit-btn"
