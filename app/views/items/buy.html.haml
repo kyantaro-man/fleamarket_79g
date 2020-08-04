@@ -1,0 +1,59 @@
+= render partial: "template/header"
+.ItemShowWrapper
+  .ItemShowHeader
+    %ol.ItemShowHeader__list
+      %li
+        =link_to root_path do
+          フリマ
+          = icon('fa', 'angle-right')
+      %li
+        =link_to "#" do
+          カテゴリ１
+          = icon('fa', 'angle-right')
+      %li
+        =link_to "#" do
+          カテゴリ２
+          = icon('fa', 'angle-right')
+      %li
+        %span 商品名
+  .Container
+    %form.BuyForm
+      .BuyForm__container
+        %h2.BuyForm__top 
+        %section.BuyForm-box
+          .Item
+            .Item-image
+            .Item-text
+              %p.Item-name MacBook
+              %p.Item-price 送料込み(税込) ￥1.980
+        %section.BuyForm-box.Money
+          .Money__top
+            %span.Money-text 支払い金額
+            %span.Money-price ￥1,980
+          .Money__bottom
+            %label.Money-point
+              %label.Money-point__left
+                %span.Money-point-checkbox
+                .Money-point-image
+                %p.Money-point-text ポイントの使用
+              %p.Money-point__right 所持ポイント：P0
+        %section.BuyForm-box.Pay
+          .Pay__top
+            %h3.Pay-text 支払い方法
+            = link_to "変更する", "#", class: "Pay-link"
+          .Pay__bottom
+            %p クレジットカード
+            %p ************%dddd
+            %p 有効期限 02/25
+            .Pay-image
+        %section.BuyForm-box.Address
+          .Address__top
+            %h3.Address-text 配送先
+            = link_to "変更する", "#", class: "Address-link"
+          .Address__bottom
+            %p 〒 111-1111
+            %p 東京都新宿区
+            %p 名前
+        %section..BuyForm-box
+          .BuyForm-btn
+          
