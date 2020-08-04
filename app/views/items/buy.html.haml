@@ -17,7 +17,7 @@
       %li
         %span 商品名
   .BuyContainer
-    = form_with model: @item, class: "BuyForm" do |f|
+    = form_with url: purchase_item_path, class: "BuyForm" do |f|
       %section.BuyForm-box
         %h2.BuyForm-title 購入内容の確認
       %section.BuyForm-box
@@ -72,3 +72,4 @@
         .Submit
           = f.submit "購入する", class: "Submit-btn"
 = render partial: "template/footer"
+
