@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   root 'tops#index'  #rootをitemsからtopsに変更
   
   resources :items, only: [:index, :new, :create, :show] do
-    memmber do
+    member do
       post 'purchase'
       get 'purchased'
       get 'buy'
