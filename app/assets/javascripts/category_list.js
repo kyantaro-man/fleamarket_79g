@@ -21,8 +21,8 @@ $(document).on('turbolinks:load', function() {              //初回読み込み
     },
     //マウスオフされた時の処理
     function(){
-      $(".ChildCategory").remove();                       //出ている子カテゴリのリストを消します
       $(".GrandchildCategory").remove();                  //出ている孫カテゴリのリストを消します
+      $(".ChildCategory").remove();                       //出ている子カテゴリのリストを消します
       $(".CategoryList").slideUp(100);
     }
   );
