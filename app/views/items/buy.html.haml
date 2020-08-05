@@ -66,8 +66,8 @@
           = @address.address
           = @address.apartment_name
           %br
-          = @user.family_name
-          = @user.first_name
+          = current_user.family_name
+          = current_user.first_name
       %section.BuyForm-box
         .Submit
           = f.submit "購入する", class: "Submit-btn"

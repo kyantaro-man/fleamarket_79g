@@ -24,7 +24,6 @@ class ItemsController < ApplicationController
 
   def buy
     #商品・ユーザー・カードの変数を決めています
-    @user = current_user
     @card = Card.find_by(user_id: current_user.id) if Card.where(user_id: current_user.id).present?
     @address = Address.find_by(user_id: current_user.id)
     @item = Item.find(params[:id])
