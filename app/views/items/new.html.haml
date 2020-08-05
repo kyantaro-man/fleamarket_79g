@@ -21,6 +21,8 @@
                   - @product.images.each_with_index do |image, i|
                     = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
               = f.fields_for :images do |image|
+                %label{id: "label_0", for: "item_images_attributes_0_src"}
+                  = icon("fas","camera")
                 .js-file_group{"data-index" => "#{image.index}"}
                   = image.file_field :src, class: 'js-file'
                   %br
@@ -33,7 +35,6 @@
                   = file_field_tag :src, name: "item[images_attributes][#{@item.images.count}][src]", class: 'js-file'
                   .js-remove 
                     削除
-
             
 
             -# ____商品名__________________

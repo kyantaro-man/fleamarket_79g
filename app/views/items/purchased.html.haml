@@ -1,0 +1,19 @@
+= render partial: "template/header"
+.UserWrapper
+  .UserHeader
+    %ol.UserHeader__list
+      %li
+        =link_to root_path do
+          フリマ
+          = icon('fa', 'angle-right')
+      %li
+        =link_to user_path(current_user.id) do
+          マイページ
+          = icon('fa', 'angle-right')
+  .UserContainer
+    .PurchasedContent
+      .PurchasedContent__top
+        %h2.PurchasedContent-title 購入が完了しました
+      .PurchasedContent__bottom
+        = link_to "トップページへ戻る", root_path
+    = render "users/side_bar"

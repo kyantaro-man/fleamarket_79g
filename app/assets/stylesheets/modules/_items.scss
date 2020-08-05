@@ -20,8 +20,8 @@
   width  :               60%;
   height :               650px;
   margin :               0 auto ;
-  background-color :    #FFFFFF;
-  border-bottom:        solid 0.5px  #F5F5F5;
+  // background-color :    #FFFFFF;
+  // border-bottom:        solid 0.5px  #F5F5F5;
   .Sell-contents{
     padding   :         60px;
     height    :         300px;
@@ -194,3 +194,9 @@ textarea{
 .ItemCategory__child {
   margin: 10px 0;
 }
+.js-file{
+  display: none;
+}
+// .Form__inputImage{
+//   display: none;
+// }
