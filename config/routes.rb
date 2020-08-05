@@ -10,7 +10,15 @@ Rails.application.routes.draw do
   end
   
   root 'tops#index'  #rootをitemsからtopsに変更
-  resources :items, only: [:index, :new, :create, :show]
+  
+  resources :items, only: [:index, :new, :create, :show] do
+    member do
+      post 'purchase'
+      get 'purchased'
+      get 'buy'
+    end
+  end
+
   resources :users, only: :show do       #マイページへのルーティング
     member do
       get 'logout'                       #ログアウト画面へのルーティング
