@@ -1,0 +1,116 @@
+.BuyContainer {
+  width: 700px;
+  margin: 0 auto;
+}
+
+.BuyForm {
+  background-color: white;
+
+  &-box {
+    width: 375px;
+    margin: 0 auto;
+    padding: 32px 16px;
+    border-top: 1px solid rgb(245, 245, 245);
+  }
+
+  &-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+  }
+}
+
+.Item {
+  display: flex;
+
+  &-image {
+    height: 80px;
+    width: 80px;
+  }
+
+  &-text {
+    width: 100%;
+    margin-left: 16px;
+    font-size: 14px;
+  }
+
+  &-name {
+    margin-bottom: 8px;
+  }
+
+  &-price {
+    text-align: right;
+
+    &__left {
+      font-size: 12px;
+    }
+
+    &__right {
+      font-size: 15px;
+      font-weight: bold;
+      margin-left: 8px;
+    }
+  }
+}
+
+.Money {
+  &__top {
+    display: flex;
+    font-size: 18px;
+    font-weight: bold;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.Pay {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  &-text {
+    font-weight: bold;
+  }
+
+  &-link {
+    text-decoration: none;
+  }
+}
+
+.Address {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-text {
+    font-weight: bold;
+  }
+
+  &-link {
+    text-decoration: none;
+  }
+}
+
+.Submit {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  &-btn {
+    height: 48px;
+    width: 100%;
+    border: 1px solid #3ccace;
+    border-radius: 4px;
+    background-color: #3ccace;
+    color: #fff;
+    font-weight: 400;
+  }
+}
