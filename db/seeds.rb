@@ -7,6 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+#categoryテーブルにデータを入れるためにターミナルで rails db:seed とコマンドしてください。
+require "csv"
+
+CSV.foreach('db/category.csv') do |info|
+  Category.create(name: info[0], ancestry: info[1])
+end
+
 Prefecture.create({id:1,name:"北海道"})
 Prefecture.create({id:2,name:"青森県"})
 Prefecture.create({id:3,name:"岩手県"})
@@ -54,4 +61,3 @@ Prefecture.create({id:44,name:"大分県"})
 Prefecture.create({id:45,name:"宮崎県"})
 Prefecture.create({id:46,name:"鹿児島県"})
 Prefecture.create({id:47,name:"沖縄県"})
-

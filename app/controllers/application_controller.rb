@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 before_action :basic_auth, if: :production?
 #before_action :authenticate_user! "常にログインを要求する"
 before_action :configure_permitted_parameters, if: :devise_controller?
-
+before_action :set_parents         #どこでも@parentsで親カテゴリが使えます
 protected
 
 def configure_permitted_parameters
@@ -30,6 +30,10 @@ end
 
 def production?
   Rails.env.production?
+end
+
+def set_parents
+  @parents = Category.where(ancestry: nil)
 end
 
 end

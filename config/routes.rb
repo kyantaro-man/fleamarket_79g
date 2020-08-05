@@ -28,6 +28,6 @@ Rails.application.routes.draw do
     resources :cards, only: [:index, :new, :create, :destroy]
 
   end
-
+  resources :categories, only: [:index, :show, :new]      #カテゴリ一覧表示
   # rails.org/routing.html
 end
