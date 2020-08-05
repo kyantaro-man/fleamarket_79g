@@ -1,5 +1,5 @@
 .Wrapper
-  = form_with model: @item, html: {class: "form"}, local:true do |f|
+  = form_with model: @item,@category, html: {class: "form"}, local:true do |f|
     .Sell-header
       .Sell-header__logo
         = image_tag "logo.png", height: "60", with: "80"

@@ -10,7 +10,8 @@ $(document).on('turbolinks:load', function() {              //初回読み込み
 
   $("#parent").on('change', function(){             //親カテゴリのが選択が変わると、子カテゴリのボックスを生成する
     let id = $(this).val()                          //選択されたカテゴリのidを取得
-    $("#child").remove();                           //子カテゴリのボックスの中身を消す
+    $("#grandchild").remove();                      //孫カテゴリのボックスを消す
+    $("#child").remove();                           //子カテゴリのボックスを消す
     $.ajax({
       type: 'GET',
       url: '/categories/new',
@@ -19,7 +20,7 @@ $(document).on('turbolinks:load', function() {              //初回読み込み
     })
     .done(function (children){
       let childHTML = `<select name="child", id="child">
-                        <option value>洗濯してください</option>`
+                        <option value>選択してください</option>`
       children.forEach(function(child){
         let html = buildChildBoxHTML(child);
         childHTML += html;
@@ -31,7 +32,7 @@ $(document).on('turbolinks:load', function() {              //初回読み込み
   //子カテゴリは動的に生成されたものなので、第二引数で指定する
   $(document).on('change', '#child', function(){             //子カテゴリのが選択が変わると、子カテゴリのボックスを生成する
     let id = $(this).val()                                   //選択されたカテゴリのidを取得
-    $("#grandchild").remove();                               //孫カテゴリのボックスの中身を消す
+    $("#grandchild").remove();                               //孫カテゴリのボックスを消す
     $.ajax({
       type: 'GET',
       url: '/categories/new',
@@ -39,8 +40,8 @@ $(document).on('turbolinks:load', function() {              //初回読み込み
       dataType: 'json',
     })
     .done(function (children){
-      let childHTML = `<select name="grandchild", id="grandchild">
-                        <option value>洗濯してください</option>`
+      let childHTML = `<select name="item[category_id]", id="item_category_id">
+                        <option value>選択してください</option>`
       children.forEach(function(child){
         let html = buildChildBoxHTML(child);
         childHTML += html;
