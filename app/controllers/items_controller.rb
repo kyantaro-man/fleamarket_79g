@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_card
+  before_action :set_item
 
   def index
     @items = Item.all
@@ -25,9 +26,7 @@ class ItemsController < ApplicationController
   end
 
   def buy
-    #商品・ユーザー・カードの変数を決めています
     @address = Address.find_by(user_id: current_user.id)
-    @item = Item.find(params[:id])
     #Payjpの秘密鍵を取得しています
     Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
     #Payjpから顧客情報を取得しています
@@ -52,8 +51,6 @@ class ItemsController < ApplicationController
   #↑同じ記述がcardsコントローラにもあります
 
   def purchase
-    @item = Item.find(params[:id])
-
     Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
 
     charge = Payjp::Charge.create(
@@ -71,6 +68,10 @@ class ItemsController < ApplicationController
 
   def set_card
     @card = Card.find_by(user_id: current_user.id) if Card.where(user_id: current_user.id).present?
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 
 
