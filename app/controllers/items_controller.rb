@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :set_card
+
   def index
     @items = Item.all
   end
@@ -24,7 +26,6 @@ class ItemsController < ApplicationController
 
   def buy
     #商品・ユーザー・カードの変数を決めています
-    @card = Card.find_by(user_id: current_user.id) if Card.where(user_id: current_user.id).present?
     @address = Address.find_by(user_id: current_user.id)
     @item = Item.find(params[:id])
     #Payjpの秘密鍵を取得しています
@@ -51,7 +52,6 @@ class ItemsController < ApplicationController
   #↑同じ記述がcardsコントローラにもあります
 
   def purchase
-    @card = Card.find_by(user_id: current_user.id)
     @item = Item.find(params[:id])
 
     Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
@@ -68,6 +68,11 @@ class ItemsController < ApplicationController
   end
 
   private
+
+  def set_card
+    @card = Card.find_by(user_id: current_user.id) if Card.where(user_id: current_user.id).present?
+  end
+
 
   def item_params
     params.require(:item).permit(:item_name, :category_id, :brand, :condition_id, :postageplayer_id, :shippingdate_id, :price, :introduction, :buyer_id, :prefecture_id, images_attributes: [:src])
