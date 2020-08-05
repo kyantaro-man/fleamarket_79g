@@ -40,7 +40,7 @@ $(document).on('turbolinks:load', function() {              //初回読み込み
       dataType: 'json',
     })
     .done(function (children){
-      let childHTML = `<select name="item[category_id]", id="item_category_id">
+      let childHTML = `<select name="item[category_id]", id="grandchild">
                         <option value>選択してください</option>`
       children.forEach(function(child){
         let html = buildChildBoxHTML(child);
