@@ -7,6 +7,7 @@ class Item < ApplicationRecord
 
   belongs_to :prefecture, optional: true
   belongs_to :category, optional: true
+  belongs_to :user
   # 1つ前のitemを取得するためのインスタンスメソッド   @item.previousで呼び出せます
   def previous
     Item.where("id < ?", self.id).order("id DESC").first                                  #@itemよりidが小さいレコードを降順で並べ最初を取得

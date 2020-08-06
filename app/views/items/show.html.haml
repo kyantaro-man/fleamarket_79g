@@ -38,19 +38,27 @@
             %br
             = @item.postageplayer.name
         .ItemBox__buy
-          = link_to buy_item_path, class: "ItemBox__buy--btn" do
-            購入する
-          = link_to "#", class: "ItemBox__buy--btn" do
-            編集する
-          = link_to "#", class: "ItemBox__buy--btn Btn--red" do
-            削除する
+          -if user_signed_in?
+            -if current_user.id == @item.user_id
+              = link_to "#", class: "ItemBox__buy--btn" do
+                編集する
+              = link_to "#", class: "ItemBox__buy--btn Btn--red" do
+                削除する
+            - else
+              = link_to buy_item_path, class: "ItemBox__buy--btn" do
+                購入する
+          - else
+            = link_to user_session_path, class: "ItemBox__buy--btn" do
+              ログインする
+            購入にはログインが必要です。
         .ItemBox__info
           = @item.introduction
         .ItemBox__table
           %table
             %tr
               %th 出品者
-              %td a
+              %td
+                = @item.user.nickname
             %tr
               %th カテゴリー
               %td
@@ -102,13 +110,15 @@
     .RelateItems
       %ul.RelateItems__itemLink
         %li
-          = link_to item_path(@item.previous) do
-            = icon('fa', 'angle-left')
-            前の商品
+          - if @item.previous.present?
+            = link_to item_path(@item.previous) do
+              = icon('fa', 'angle-left')
+              前の商品
         %li
-          = link_to item_path(@item.next) do
-            後ろの商品
-            = icon('fa', 'angle-right')
+          - if @item.next.present?
+            = link_to item_path(@item.next) do
+              後ろの商品
+              = icon('fa', 'angle-right')
       .RelateItems__category
         .RelateItems__category--name
           = link_to "#" do
