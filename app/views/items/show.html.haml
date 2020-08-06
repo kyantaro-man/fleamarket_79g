@@ -8,37 +8,44 @@
           = icon('fa', 'angle-right')
       %li
         =link_to "#" do
-          カテゴリ１
+          = @item.category.root.name
           = icon('fa', 'angle-right')
       %li
         =link_to "#" do
-          カテゴリ２
+          = @item.category.parent.name
           = icon('fa', 'angle-right')
       %li
-        %span 商品名
+        %span
+          = @item.item_name
   .ItemShowContent
     .ItemShowContent__top
       .ItemBox
         .ItemBox__title
-          商品名
+          = @item.item_name
         .ItemBox__image
           .ItemBox__image--main
-            = image_tag "photo/photo_3.jpg", size:"360x360", alt: "item-image"
+            = image_tag @item.images.first.src.url, size:"360x300", alt: "item-image"
           %ul.ItemBox__image--sub
-            %li
-              = image_tag "photo/photo_1.jpg", size:"90x90", alt: "item-image"
-            %li
-              = image_tag "photo/photo_L4.jpg", size:"90x90", alt: "item-image"
+            -if @item.images.length >= 2                  #画像が２枚以上の時にサムネイル表示を行う
+              - @item.images.each do |image|
+                %li
+                  = image_tag image.src.url, size:"90x75", alt: "item-image"
         .ItemBox__price
-          %h1 ¥10000
+          %h1
+            = "#{@item.price}円"
           .itemBox__price--detail
             (税込み)
-            送料込み
+            %br
+            = @item.postageplayer.name
         .ItemBox__buy
           = link_to buy_item_path, class: "ItemBox__buy--btn" do
             購入する
+          = link_to "#", class: "ItemBox__buy--btn" do
+            編集する
+          = link_to "#", class: "ItemBox__buy--btn Btn--red" do
+            削除する
         .ItemBox__info
-          いいですよ
+          = @item.introduction
         .ItemBox__table
           %table
             %tr
@@ -47,25 +54,31 @@
             %tr
               %th カテゴリー
               %td
-                = @item.category.parent.parent.name
+                = link_to @item.category.root.name, "#"
+                %br
+                = link_to @item.category.parent.name, "#"
+                %br
+                = link_to @item.category.name, "#"
             %tr
               %th ブランド
               %td 
-            %tr
-              %th 商品のサイズ
-              %td
+                = @item.brand
             %tr
               %th 商品の状態
-              %td 新品/未使用
+              %td
+                = @item.condition.name
             %tr
               %th 配送料の負担
-              %td 送料込み（出品者負担）
+              %td
+                = @item.postageplayer.name
             %tr
               %th 発送元の地域
-              %td 他移動
+              %td
+                = @item.prefecture.name
             %tr
               %th 発送日の目安
-              %td 1-2日で発送
+              %td
+                = @item.shippingdate.name
         .ItemBox__optional
           .ItemBox__optional--like
             = icon('fa', 'star')
@@ -89,59 +102,32 @@
     .RelateItems
       %ul.RelateItems__itemLink
         %li
-          = link_to "#" do
+          = link_to item_path(@item.previous) do
             = icon('fa', 'angle-left')
             前の商品
         %li
-          = link_to "#" do
+          = link_to item_path(@item.next) do
             後ろの商品
             = icon('fa', 'angle-right')
       .RelateItems__category
         .RelateItems__category--name
           = link_to "#" do
-            ベビー・キッズカテゴリをもっと見る
+            = "#{@item.category.parent.parent.name}をもっと見る"
         .RelateItemsList
-          .RelateItemsList__item
-            = link_to "#" do
-              .RelateItemList__item--image
-                = image_tag "photo/photo_3.jpg", size:"200x200"
-              .ItemDetail
-                .ItemDetail__name
-                  item-name
-                .ItemDetail__info
-                  .ItemDetail__price
-                    300円
-                  .ItemDetail__like
-                    = icon('fa', 'star')
-                    0
-                %p (税込)
-          .RelateItemsList__item
-            = link_to "#" do
-              .RelateItemList__item--image
-                = image_tag "photo/photo_3.jpg", size:"200x200"
-              .ItemDetail
-                .ItemDetail__name
-                  item-name
-                .ItemDetail__info
-                  .ItemDetail__price
-                    300円
-                  .ItemDetail__like
-                    = icon('fa', 'star')
-                    0
-                %p (税込)
-          .RelateItemsList__item
-            = link_to "#" do
-              .RelateItemList__item--image
-                = image_tag "photo/photo_3.jpg", size:"200x200"
-              .ItemDetail
-                .ItemDetail__name
-                  item-name
-                .ItemDetail__info
-                  .ItemDetail__price
-                    300円
-                  .ItemDetail__like
-                    = icon('fa', 'star')
-                    0
-                %p (税込)
+          - @item.relate_item.each do |item|
+            .RelateItemsList__item
+              = link_to "#" do
+                .RelateItemList__item--image
+                  = image_tag item.images.first.src.url, size:"200x200"
+                .ItemDetail
+                  .ItemDetail__name
+                    = item.item_name
+                  .ItemDetail__info
+                    .ItemDetail__price
+                      = item.price
+                    .ItemDetail__like
+                      = icon('fa', 'star')
+                      0
+                  %p (税込)
 = render partial: "template/footer"
 = render partial: "template/exhibit"
