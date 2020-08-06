@@ -22,6 +22,6 @@ class User < ApplicationRecord
             format: {with: /\A[0-9]+\z/}
 
   has_one :address
-
+  has_many :items
   has_many :cards
 end
