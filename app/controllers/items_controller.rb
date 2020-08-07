@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  # before_action :set_card
-  # before_action :set_item
+  before_action :set_card
+  before_action :set_item
 
   def index
     @items = Item.all
@@ -21,7 +21,6 @@ class ItemsController < ApplicationController
   end
 
   def show    #商品詳細ページ
-    @item = Item.find(params[:id])
     @comment = Comment.new
     @comments = @item.comments.includes(:user)
   end
