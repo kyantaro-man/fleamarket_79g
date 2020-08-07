@@ -98,12 +98,12 @@
               不適切な商品の通報
         .ItemBox
     .ItemComment
-      .CommentBox
+      .CommentBox{data: {id: @item.user.id}}
         .CommentField
           - if @comments
             - @comments.each do |comment|
               .CommentContent
-                .CommentContent__user{data: {id: @item.user.id}}
+                .CommentContent__user
                   = comment.user.nickname
                   - if comment.user.id == @item.user.id
                     %span (出品者)

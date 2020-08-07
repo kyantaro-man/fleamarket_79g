@@ -51,7 +51,7 @@ $(document).on('turbolinks:load', function(){
 
     })
     .done(function(data){
-      let id = $(".CommentContent__user").data()
+      let id = $(".CommentBox").data()
       let html = buildcommentHTML(data, id);
       $('.CommentField').append(html);
       $('.CommentForm__textarea').val('');
