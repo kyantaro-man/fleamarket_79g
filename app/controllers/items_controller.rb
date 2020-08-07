@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   before_action :set_card
   before_action :set_item,only:[:buy,:purchase]
+  before_action :set_item, only: [:show, :destroy, :buy, :purchase]
+
 
   def index
     @items = Item.all
@@ -22,7 +24,18 @@ class ItemsController < ApplicationController
   end
 
   def show    #商品詳細ページ
+
     @item = Item.find(params[:id]) 
+
+  end
+
+  def destroy
+    if @item.destroy
+      redirect_to root_path, notice: '商品を削除しました'
+    else
+      render :edit
+    end
+
   end
 
   def buy
@@ -76,7 +89,7 @@ class ItemsController < ApplicationController
 
 
   def item_params
-    params.require(:item).permit(:item_name, :category_id, :brand, :condition_id, :postageplayer_id, :shippingdate_id, :price, :introduction, :buyer_id, :prefecture_id, images_attributes: [:src])
+    params.require(:item).permit(:item_name, :category_id, :brand, :condition_id, :postageplayer_id, :shippingdate_id, :price, :introduction, :buyer_id, :prefecture_id, images_attributes: [:src]).merge(user_id: current_user.id)
   end  
   
 end

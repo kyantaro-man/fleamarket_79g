@@ -68,6 +68,10 @@
             color: #fff;
             background-color: #87cefa;
             border-radius: 5px;
+            margin-bottom: 10px;
+          }
+          .Btn--red{
+            background-color: rgb(255, 58, 58);
           }
           &--btn:hover{
             opacity: 0.8;
@@ -79,6 +83,14 @@
         }
         &__table{
           margin: 0 auto;
+          a{
+            text-decoration: none;
+            color: #87cefa;
+            cursor: default;
+          }
+          a:hover{
+            text-decoration: underline;
+          }
           table{
             font-size: 15px;
             tr{
@@ -135,7 +147,8 @@
         border-radius: 3px;
         &__textarea{
           max-width: 100%;
-          width: 100%;
+          min-width: 100%;
+          height: 130px;
           min-height: 130px;
           margin-bottom: 20px;
         }
