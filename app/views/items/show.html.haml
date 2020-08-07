@@ -100,17 +100,17 @@
     .ItemComment
       .CommentBox
         .CommentField
-          - @comments.each do |comment|
-            .CommentField__comment
+          - if @comments
+            - @comments.each do |comment|
               .CommentContent
-                .CommentContent__user
+                .CommentContent__user{data: {id: @item.user.id}}
                   = comment.user.nickname
                   - if comment.user.id == @item.user.id
                     %span (出品者)
                 .CommentContent__text
                   = comment.text
       - if current_user
-        = form_with(model: [@item, @comment], local: true, class: "CommentForm") do |form|
+        = form_with(model: [@item, @comment], local: true, id: "new_comment", class: "CommentForm") do |form|
           = form.text_area :text, class: "CommentForm__textarea"
           .CommentForm__noticeMsg
             相手のことを考え丁寧なコメントを心がけましょう。
@@ -119,17 +119,6 @@
           %button{type: "submit", class: "CommentForm__submit"}
             = icon('fa','comment')
             コメントする
-
-      -# %form.CommentForm
-      -#   %textarea.CommentForm__textarea
-      -#   .CommentForm__noticeMsg
-      -#     相手のことを考え丁寧なコメントを心がけましょう。
-      -#     %br
-      -#     不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      -#   %button{type: "submit", class: "CommentForm__submit"}
-      -#     = icon('fa','comment')
-      -#     コメントする
-
     .RelateItems
       %ul.RelateItems__itemLink
         %li
