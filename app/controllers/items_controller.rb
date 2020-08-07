@@ -1,9 +1,10 @@
 class ItemsController < ApplicationController
   before_action :set_card
-  before_action :set_item
+  before_action :set_item,only:[:buy,:purchase]
 
   def index
     @items = Item.all
+  
   end
 
   def new
@@ -17,11 +18,11 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       render :new
-     end
+    end
   end
 
   def show    #商品詳細ページ
-    # @item = Item.find(params[:id])   商品の投稿ができてから😄
+    @item = Item.find(params[:id]) 
   end
 
   def buy

@@ -1,7 +1,7 @@
 .Wrapper
   = form_with model: @item, html: {class: "form"}, local:true do |f|
     .Sell-header
-      .Sell-header__logo
+      =link_to root_path do
         = image_tag "logo.png", height: "60", with: "80"
 
     .Container
@@ -18,7 +18,7 @@
             #image-box
               #previews
                 - if @item.persisted?
-                  - @product.images.each_with_index do |image, i|
+                  - @item.images.each_with_index do |image, i|
                     = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
               = f.fields_for :images do |image|
                 %label{id: "label_0", for: "item_images_attributes_0_src"}
@@ -168,4 +168,5 @@
       %li
         = link_to "ポイントに関する特約", "#"
     .Sell-header
-      = image_tag "logo.png", height: "60", with: "80"
+      =link_to root_path do
+        = image_tag "logo.png", height: "60", with: "80"
