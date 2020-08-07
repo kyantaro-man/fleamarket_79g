@@ -1,7 +1,7 @@
 .Wrapper
   = form_with model: @item, html: {class: "form"}, local:true do |f|
     .Sell-header
-      .Sell-header__logo
+      =link_to root_path do
         = image_tag "logo.png", height: "60", with: "80"
 
     .Container
@@ -168,4 +168,5 @@
       %li
         = link_to "ポイントに関する特約", "#"
     .Sell-header
-      = image_tag "logo.png", height: "60", with: "80"
+      =link_to root_path do
+        = image_tag "logo.png", height: "60", with: "80"

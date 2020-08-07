@@ -1,0 +1,19 @@
+.pick_up__category--flex
+  - @items.each do |item|
+    .item
+      .image
+        = link_to item_path(item) do
+          = image_tag item.images.first.src.url,width: "250px", height: "300px"
+          -if item.buyer_id.present? 
+            .items-box_photo__sold
+              .items-box_photo__sold__inner 
+                SOLD
+      .info
+        %p
+          = item.item_name
+          %br/
+          ¥
+          = item.price
+          %br/
+          %i.fas.fa-star
+          0
