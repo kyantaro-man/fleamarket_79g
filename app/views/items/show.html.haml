@@ -42,7 +42,7 @@
             -if current_user.id == @item.user_id
               = link_to "#", class: "ItemBox__buy--btn" do
                 編集する
-              = link_to "#", class: "ItemBox__buy--btn Btn--red" do
+              = link_to item_path(@item), method: :delete, class: "ItemBox__buy--btn Btn--red" do
                 削除する
             - else
               = link_to buy_item_path, class: "ItemBox__buy--btn" do
