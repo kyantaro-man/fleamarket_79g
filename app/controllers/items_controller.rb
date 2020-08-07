@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_card
-  before_action :set_item, only: [:buy, :purchase]
+  before_action :set_item, only: [:show, :destroy, :buy, :purchase]
 
   def index
     @items = Item.all
