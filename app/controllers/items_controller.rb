@@ -1,9 +1,12 @@
 class ItemsController < ApplicationController
   before_action :set_card
+  before_action :set_item,only:[:buy,:purchase]
   before_action :set_item, only: [:show, :destroy, :buy, :purchase]
+
 
   def index
     @items = Item.all
+  
   end
 
   def new
@@ -17,7 +20,7 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       render :new
-     end
+    end
   end
 
   def show    #商品詳細ページ
@@ -31,6 +34,7 @@ class ItemsController < ApplicationController
     else
       render :edit
     end
+
   end
 
   def buy
