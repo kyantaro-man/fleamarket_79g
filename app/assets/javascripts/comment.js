@@ -1,15 +1,4 @@
 $(document).on('turbolinks:load', function(){
-  // - if @comments
-  // - @comments.each do |comment|
-  //   .CommentField__comment
-  //     .CommentContent
-  //       .CommentContent__user
-  //         = comment.user.nickname
-  //         - if comment.user.id == @item.user.id
-  //           %span (出品者)
-  //       .CommentContent__text
-  //         = comment.text
-
   function buildcommentHTML(comment,id){
     if(comment.user_id == id.id){
       let html = `<div class="CommentContent">
