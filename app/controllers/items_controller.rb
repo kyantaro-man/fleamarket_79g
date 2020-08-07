@@ -27,7 +27,7 @@ class ItemsController < ApplicationController
   def destroy
     item = Item.find(params[:id])
     if item.destroy
-      redirect_to items_path, notice: '商品を削除しました'
+      redirect_to root_path, notice: '商品を削除しました'
     else
       render :edit
     end
