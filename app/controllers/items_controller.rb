@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_card
-  before_action :set_item, only: [:buy, :purchase]
+  before_action :set_item, only: [:show, :destroy, :buy, :purchase]
 
   def index
     @items = Item.all
@@ -21,12 +21,10 @@ class ItemsController < ApplicationController
   end
 
   def show    #商品詳細ページ
-    @item = Item.find(params[:id])
   end
 
   def destroy
-    item = Item.find(params[:id])
-    if item.destroy
+    if @item.destroy
       redirect_to root_path, notice: '商品を削除しました'
     else
       render :edit
