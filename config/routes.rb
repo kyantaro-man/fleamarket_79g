@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       get 'purchased'
       get 'buy'
     end
+    resources :comments, only: :create
   end
 
   resources :users, only: :show do       #マイページへのルーティング
