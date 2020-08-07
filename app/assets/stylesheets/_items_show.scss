@@ -1,64 +1,64 @@
-.ItemShowWrapper{
+.ItemShowWrapper {
   background-color: #f5f5f5;
-  .ItemShowHeader{
+  .ItemShowHeader {
     background-color: #fff;
     border-top: solid 1px #eee;
     border-bottom: solid 3px #baba;
-    &__list{
+    &__list {
       width: 1020px;
       padding: 15px;
-      li{
+      li {
         display: inline-block;
         font-size: 15px;
-        a{
+        a {
           text-decoration: none;
           color: #333;
         }
-        a:hover{
+        a:hover {
           color: #87cefa;
         }
-        i{
+        i {
           margin: 0 10px;
           font-size: 17px;
           color: #888;
         }
-        span{
+        span {
           font-weight: bold;
         }
       }
     }
   }
-  .ItemShowContent{
+  .ItemShowContent {
     padding: 40px;
-    &__top{
+    &__top {
       width: 700px;
       margin: 0 auto 10px;
-      .ItemBox{
+      .ItemBox {
         background-color: #fff;
         text-align: center;
         padding: 20px 40px;
         border-radius: 3px;
-        &__title{
+        &__title {
           font-size: 25px;
           font-weight: bold;
           margin-bottom: 15px;
         }
-        &__image{
+        &__image {
           margin-bottom: 10px;
-          &--sub{
+          &--sub {
             display: flex;
             justify-content: center;
           }
         }
-        &__price{
-          h1{
+        &__price {
+          h1 {
             font-size: 40px;
             font-weight: bold;
           }
         }
-        &__buy{
+        &__buy {
           padding: 30px 50px;
-          &--btn{
+          &--btn {
             display: block;
             margin: 0 auto;
             width: 60%;
@@ -69,38 +69,38 @@
             border-radius: 5px;
             margin-bottom: 10px;
           }
-          .Btn--red{
+          .Btn--red {
             background-color: rgb(255, 58, 58);
           }
-          &--btn:hover{
+          &--btn:hover {
             opacity: 0.8;
           }
         }
-        &__info{
+        &__info {
           text-align: left;
           margin-bottom: 25px;
         }
-        &__table{
+        &__table {
           margin: 0 auto;
-          a{
+          a {
             text-decoration: none;
             color: #87cefa;
             cursor: default;
           }
-          a:hover{
+          a:hover {
             text-decoration: underline;
           }
-          table{
+          table {
             font-size: 15px;
-            tr{
-              th{
+            tr {
+              th {
                 background-color: #eee;
                 border: 1px solid #baba;
                 height: 55px;
                 width: 150px;
                 text-align: center;
               }
-              td{
+              td {
                 padding-left: 20px;
                 border: 1px solid #baba;
                 width: 500px;
@@ -109,19 +109,19 @@
             }
           }
         }
-        &__optional{
+        &__optional {
           margin-top: 25px;
           display: flex;
           justify-content: space-between;
-          &--like{
+          &--like {
             color: #87cefa;
             border: 1px solid orange;
             padding: 5px 20px;
             font-size: 14px;
             border-radius: 15px;
           }
-          &--bad{
-            .badBtn{
+          &--bad {
+            .badBtn {
               padding: 7px;
               text-decoration: none;
               color: #333;
@@ -129,29 +129,29 @@
               border: 1px solid #333;
               border-radius: 5px;
             }
-            .badBtn:hover{
+            .badBtn:hover {
               opacity: 0.8;
             }
           }
         }
       }
     }
-    .ItemComment{
+    .ItemComment {
       width: 700px;
       margin: 0 auto;
-      .CommentForm{
+      .CommentForm {
         background-color: #fff;
         text-align: center;
         padding: 30px;
         border-radius: 3px;
-        &__textarea{
+        &__textarea {
           max-width: 100%;
           min-width: 100%;
           height: 130px;
           min-height: 130px;
           margin-bottom: 20px;
         }
-        &__noticeMsg{
+        &__noticeMsg {
           background-color: #f5f5f5;
           font-size: 14px;
           text-align: left;
@@ -159,7 +159,7 @@
           border-radius: 5px;
           margin-bottom: 20px;
         }
-        &__submit{
+        &__submit {
           width: 400px;
           height: 50px;
           font-size: 20px;
@@ -169,74 +169,78 @@
           border-radius: 20px;
           cursor: pointer;
         }
-        &__submit:hover{
+        &__submit:hover {
           opacity: 0.8;
         }
       }
     }
-    .RelateItems{
+    .RelateItems {
       width: 700px;
       margin: 0 auto;
       margin-top: 10px;
-      &__itemLink{
+      &__itemLink {
         display: flex;
         justify-content: space-between;
-        a{
+        a {
           text-decoration: none;
           color: #87cefa;
         }
-        a:hover{
+        a:hover {
           text-decoration: underline;
           opacity: 0.8;
         }
       }
-      &__category{
+      &__category {
         margin-top: 20px;
-        &--name{
+        &--name {
           margin-bottom: 30px;
-          a{
+          a {
             font-size: 20px;
             font-weight: bold;
             color: #87cefa;
             text-decoration: none;
           }
-          a:hover{
+          a:hover {
             text-decoration: underline;
             opacity: 0.8;
           }
         }
-        .RelateItemsList{
+        .RelateItemsList {
           display: flex;
           justify-content: space-around;
-          &__item{
+          &__item {
             background-color: #fff;
             width: 200px;
             font-size: 12px;
             border-radius: 3px;
-            a{
+            a {
               text-decoration: none;
               color: #333;
-              .ItemDetail{
+              .ItemDetail {
                 padding: 5px 15px;
-                &__name{
+                &__name {
                   font-weight: bold;
                 }
-                &__info{
+                &__info {
                   display: flex;
                   justify-content: space-between;
                   font-weight: bold;
                 }
-                p{
+                p {
                   font-size: 9px;
                 }
               }
             }
           }
-          &__item:hover{
+          &__item:hover {
             opacity: 0.7;
           }
         }
       }
     }
   }
+}
+
+.Disabled {
+  pointer-events: none;
 }
