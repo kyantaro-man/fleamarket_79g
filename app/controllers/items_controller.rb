@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :set_card
   before_action :set_item, only: [:edit, :update, :show, :buy, :purchase]
 
+
   def index
     @items = Item.all
   end
@@ -33,6 +34,15 @@ class ItemsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    item.update(item_params)
   end
 
   def show    #商品詳細ページ

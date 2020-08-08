@@ -20,6 +20,7 @@
                 - if @item.persisted?
                   - @item.images.each_with_index do |image, i|
                     = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
+
         #image-file-fields
           = f.fields_for :images do |image|
             .js-file_group{"data-index" => "#{image.index}"}
@@ -34,6 +35,7 @@
               .js-remove.hidden
                 削除
         
+
 
             -# ____商品名__________________
     .Container
