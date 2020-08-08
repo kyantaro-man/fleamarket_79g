@@ -4,15 +4,16 @@ $(document).on('turbolinks:load', ()=> {
     const html = `<div data-index="${index}" class="js-file_group">
                     <input class="js-file" type="file"
                     name="item[images_attributes][${index}][src]"
-                    id="item_images_attributes_${index}_src"><br>
-                    <div class="js-remove">削除</div>
+                    id="item_images_attributes_${index}_src">
+                    <div class="js-remove hidden">削除</div>
                   </div>`;
     return html;
   }
 
   // プレビュー用のimgタグを生成する関数
   const buildImg = (index, url)=> {
-  const html = `<img data-index="${index}" src="${url}" width="100px" height="100px">`;
+  const html = `<img data-index="${index}" src="${url}" width="100px" height="100px">
+                `;
   return html;
   }
 
@@ -24,7 +25,7 @@ $(document).on('turbolinks:load', ()=> {
   // });
 
   // file_fieldのnameに動的なindexをつける為の配列
-  let fileIndex = [1,2,3,4,5,6,7,8,9,10];
+  let fileIndex = [1,2,3,4,5];
 
    // 既に使われているindexを除外
    lastIndex = $('.js-file_group:last').data('index');
@@ -33,7 +34,7 @@ $(document).on('turbolinks:load', ()=> {
    $('.hidden-destroy').hide();
 
 
-  $('#image-box').on('change', '.js-file', function(e) {
+  $('#image-file-fields').on('change', '.js-file', function(e) {
     const targetIndex = $(this).parent().data('index');
     // ファイルのブラウザ上でのURLを取得する
     const file = e.target.files[0];
@@ -48,14 +49,30 @@ $(document).on('turbolinks:load', ()=> {
       $(`#label_${targetIndex}`).attr("id", `label_${targetIndex + 1}`)
       $('#previews').append(buildImg(targetIndex, blobUrl));
       // fileIndexの先頭の数字を使ってinputを作る
-      $(`#image-box`).append(buildFileField(fileIndex[0]));
+      $(`#image-file-fields`).append(buildFileField(fileIndex[0]));
       fileIndex.shift();
       // 末尾の数に1足した数を追加する
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
+      
     }
   });
 
-  $('#image-box').on('click', '.js-remove', function() {
+
+  $('.Sell-contents__imageBox').on('click', function(e) {
+    e.stopPropagation();
+    const file_field = $('input[type="file"]:last');
+    console.log(file_field);
+    file_field.trigger('click');
+    // $('.js-file_group:last').removeClass("js-remove")
+  });
+
+  $(document).on('change', '.js-file', function(e) {
+    console.log($(this).next())
+    $(this).next().toggleClass('hidden')
+  });
+
+  $('#image-file-fields').on('click', '.js-remove', function() {
+  // $('#previews').on('click', '.js-remove', function() {
     const targetIndex = $(this).parent().data('index');
     // 該当indexを振られているチェックボックスを取得する
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);

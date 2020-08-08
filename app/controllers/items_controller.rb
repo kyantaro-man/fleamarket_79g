@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_card
-  before_action :set_item
+  before_action :set_item, only: [:edit, :update, :show, :buy, :purchase]
 
   def index
     @items = Item.all
@@ -18,7 +18,17 @@ class ItemsController < ApplicationController
     else
 
       render :new
-     end
+    end
+  end
+
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+
+  def update
+    @item = Item.find(params[:id])
+    @item.update(item_params)
   end
 
   def show    #商品詳細ページ
@@ -76,7 +86,8 @@ class ItemsController < ApplicationController
 
 
   def item_params
-    params.require(:item).permit(:item_name, :category_id, :brand, :condition_id, :postageplayer_id, :shippingdate_id, :price, :introduction, :buyer_id, :prefecture_id, images_attributes: [:src])
+    params.require(:item).permit(:item_name, :category_id, :brand, :condition_id, :postageplayer_id, :shippingdate_id, :price, :introduction, :buyer_id, :prefecture_id, images_attributes: [:src, :_destroy, :id])
   end  
+
   
 end

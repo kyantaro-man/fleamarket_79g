@@ -2,7 +2,7 @@ class Item < ApplicationRecord
   has_many :images
   accepts_nested_attributes_for :images, allow_destroy: true
 
-  validates :item_name, :category_id, :brand, :condition_id, :postageplayer_id,
+  validates :item_name, :category_id, :condition_id, :postageplayer_id,
    :shippingdate_id, :price, :introduction, :prefecture_id, presence: true
 
   belongs_to :prefecture, optional: true

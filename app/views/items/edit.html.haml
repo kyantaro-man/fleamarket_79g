@@ -31,9 +31,9 @@
           - if @item.persisted?
             .js-file_group{"data-index" => "#{@item.images.count}"}
               = file_field_tag :src, name: "item[images_attributes][#{@item.images.count}][src]", class: 'js-file'
-              .js-remove.hidden 
+              .js-remove.hidden
                 削除
-            
+        
 
             -# ____商品名__________________
     .Container
@@ -147,7 +147,7 @@
               ¥ ー
               
         .Submit-container
-          = f.submit "出品する",class:'Sell_submit'
+          = f.submit "変更する",class:'Sell_submit'
         .Split
           禁止されている行為および出品物を必ずご確認ください。偽ブランド品などの販売は犯罪であり、法律に
           より処罰される可能性があります。出品をもちまして加盟店規約に同意したことになります。
