@@ -23,12 +23,10 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
 
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to root_path
     else
@@ -36,19 +34,8 @@ class ItemsController < ApplicationController
     end
   end
 
-  def edit
-    @item = Item.find(params[:id])
-  end
-
-  def update
-    @item = Item.find(params[:id])
-    item.update(item_params)
-  end
-
+  
   def show    #商品詳細ページ
-
-    @item = Item.find(params[:id]) 
-
   end
 
   def destroy
