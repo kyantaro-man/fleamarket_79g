@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_card
-  before_action :set_item,only:[:buy,:purchase]
-  before_action :set_item, only: [:show, :destroy, :buy, :purchase]
+  before_action :set_item, only: [:edit, :update,:show, :destroy, :buy, :purchase]
 
 
   def index
@@ -23,10 +22,20 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+
+  def update
+    if @item.update(item_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
+  
   def show    #商品詳細ページ
-
-    @item = Item.find(params[:id]) 
-
   end
 
   def destroy
@@ -89,7 +98,8 @@ class ItemsController < ApplicationController
 
 
   def item_params
-    params.require(:item).permit(:item_name, :category_id, :brand, :condition_id, :postageplayer_id, :shippingdate_id, :price, :introduction, :buyer_id, :prefecture_id, images_attributes: [:src]).merge(user_id: current_user.id)
+    params.require(:item).permit(:item_name, :category_id, :brand, :condition_id, :postageplayer_id, :shippingdate_id, :price, :introduction, :buyer_id, :prefecture_id, images_attributes: [:src, :_destroy, :id]).merge(user_id: current_user.id)
   end  
+
   
 end

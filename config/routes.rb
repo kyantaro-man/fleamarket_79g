@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   
   root 'tops#index'  #rootをitemsからtopsに変更
   
-  resources :items, only: [:index, :new, :create, :show, :destroy] do
+  resources :items, only: [:index, :new, :create, :edit, :update, :show, :destroy] do
     member do
       post 'purchase'
       get 'purchased'
