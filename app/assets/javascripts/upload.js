@@ -17,13 +17,6 @@ $(document).on('turbolinks:load', ()=> {
   return html;
   }
 
-  // file_fieldをクリックしたとき
-  // $("#test").on("click", function () {
-  //   const file_field = $(".js-file:last"); // 一番最後のfile_field（新規でアップロードする箇所）を取得
-  //   console.log(file_field)
-  //   file_field.trigger("click"); // file_fieldをクリックさせる。
-  // });
-
   // file_fieldのnameに動的なindexをつける為の配列
   let fileIndex = [1,2,3,4,5];
 
@@ -44,7 +37,6 @@ $(document).on('turbolinks:load', ()=> {
     if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
       img.setAttribute('src', blobUrl);
     } else {  // 新規画像追加の処理
-      // debugger
       $(`#label_${targetIndex}`).attr("for", `item_images_attributes_${targetIndex + 1}_src`)
       $(`#label_${targetIndex}`).attr("id", `label_${targetIndex + 1}`)
       $('#previews').append(buildImg(targetIndex, blobUrl));
@@ -61,13 +53,11 @@ $(document).on('turbolinks:load', ()=> {
   $('.Sell-contents__imageBox').on('click', function(e) {
     e.stopPropagation();
     const file_field = $('input[type="file"]:last');
-    console.log(file_field);
     file_field.trigger('click');
-    // $('.js-file_group:last').removeClass("js-remove")
+    
   });
 
   $(document).on('change', '.js-file', function(e) {
-    console.log($(this).next())
     $(this).next().toggleClass('hidden')
   });
 
