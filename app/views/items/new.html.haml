@@ -1,7 +1,7 @@
 .Wrapper
   = form_with model: @item, html: {class: "form"}, local:true do |f|
     .Sell-header
-      .Sell-header__logo
+      =link_to root_path do
         = image_tag "logo.png", height: "60", with: "80"
 
     .Container
@@ -67,7 +67,11 @@
           .required
             必須
         .Form__contents
-          = f.text_field :category_id, class:'Form-sell__text'
+          -# = f.text_field :category_id, class:'Form-sell__text'
+          .ItemCategory__parent
+            = select_tag("parent",options_for_select(@parents.pluck(:name, :id)), include_blank: '選択して下さい')
+          .ItemCategory__child         
+          .ItemCategory__grandchild
           
 
         .Sell-contents__title
@@ -163,4 +167,5 @@
       %li
         = link_to "ポイントに関する特約", "#"
     .Sell-header
-      = image_tag "logo.png", height: "60", with: "80"
+      =link_to root_path do
+        = image_tag "logo.png", height: "60", with: "80"

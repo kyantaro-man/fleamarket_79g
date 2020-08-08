@@ -21,10 +21,10 @@ $(document).on('turbolinks:load', ()=> {
   let fileIndex = [1,2,3,4,5];
 
    // 既に使われているindexを除外
-   lastIndex = $('.js-file_group:last').data('index');
-   fileIndex.splice(0, lastIndex);
+  lastIndex = $('.js-file_group:last').data('index');
+  fileIndex.splice(0, lastIndex);
 
-   $('.hidden-destroy').hide();
+  $('.hidden-destroy').hide();
 
 
   $('#image-file-fields').on('change', '.js-file', function(e) {

@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_30_061424) do
+ActiveRecord::Schema.define(version: 2020_08_06_082141) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "zip_code", null: false
+    t.string "zip_code", null: false
     t.string "prefecture", null: false
     t.string "municipality", null: false
     t.string "address", null: false
@@ -34,6 +34,14 @@ ActiveRecord::Schema.define(version: 2020_07_30_061424) do
     t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "ancestry"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
+  end
+
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "src"
     t.bigint "item_id"
@@ -44,7 +52,6 @@ ActiveRecord::Schema.define(version: 2020_07_30_061424) do
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "item_name", null: false
-    t.string "category_id", null: false
     t.string "brand", null: false
     t.integer "condition_id", null: false
     t.integer "postageplayer_id", null: false
@@ -55,7 +62,11 @@ ActiveRecord::Schema.define(version: 2020_07_30_061424) do
     t.integer "buyer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["prefecture_id"], name: "index_items_on_prefecture_id"
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "prefectures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -87,5 +98,6 @@ ActiveRecord::Schema.define(version: 2020_07_30_061424) do
   add_foreign_key "addresses", "users"
   add_foreign_key "cards", "users"
   add_foreign_key "images", "items"
+  add_foreign_key "items", "categories"
   add_foreign_key "items", "prefectures"
 end
