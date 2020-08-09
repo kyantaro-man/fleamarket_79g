@@ -140,6 +140,31 @@
     .ItemComment{
       width: 700px;
       margin: 0 auto;
+      .CommentBox{
+        background-color: #fff;
+        max-height: 300px;
+        padding: 30px;
+        overflow: scroll;
+        .CommentField{
+          padding: 0 20px;
+          .CommentContent{
+            margin-bottom: 10px;
+            &__user{
+              font-size: 20px;
+              span{
+                font-size: 12px;
+              }
+            }
+            &__text{
+              width: 400px;
+              background-color: #eee;
+              border-radius: 20px;
+              padding: 10px;
+              margin-left: 30px;
+            }
+          }
+        }
+      }
       .CommentForm{
         background-color: #fff;
         text-align: center;
