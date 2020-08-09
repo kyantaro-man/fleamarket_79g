@@ -28,12 +28,13 @@
   margin-top: 100px;
   height:           1500px;
   width:            100vw;
-  background-color: rgb(250, 250, 250);
+  
   a{
     height: 50%;
   }
   &__category{
     @include pic_up_content();
+    
     h1{
       @include pic_up_h1();
     }
@@ -41,23 +42,38 @@
       @include pic_up_color();
     }
     &--flex{
-      @include pic_up_flex();
+      width:            80%;
+      height:           500px;
+      margin:           0 auto 60px;
+      display: flex;
+      justify-content: start;
       overflow:         auto;
       .item{
+        background-color: lightgray;
+        width: 250px;
+        height: 400px;
         position: relative;
-        .image{
+        margin: 25px 0 25px 25px;
+      .image{
+          width: 250px;
+          height: 300px;
           display: flex;
           justify-content: space-between;
+          
         }
         .info{
-          width: 1400px;
+          width: 250px;
           height: 100px;
           background-color: #fff;
           display: flex;
           justify-content: space-between;
+          &__box{
+            display: flex;
+          }
           p{
             line-height: 25px;
             padding: 10px;
+            font-weight: bold;
           }
           i{
             bottom: 10px;
@@ -91,4 +107,4 @@
   }
 }
 
-//出品機能
+

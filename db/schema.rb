@@ -62,8 +62,8 @@ ActiveRecord::Schema.define(version: 2020_08_06_082141) do
     t.integer "buyer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id", null: false
     t.bigint "category_id"
+    t.bigint "user_id"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["prefecture_id"], name: "index_items_on_prefecture_id"
     t.index ["user_id"], name: "index_items_on_user_id"
@@ -100,4 +100,5 @@ ActiveRecord::Schema.define(version: 2020_08_06_082141) do
   add_foreign_key "images", "items"
   add_foreign_key "items", "categories"
   add_foreign_key "items", "prefectures"
+  add_foreign_key "items", "users"
 end

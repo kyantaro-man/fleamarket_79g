@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-     registrations: 'users/registrations' 
+    registrations: 'users/registrations' 
   }
   devise_scope :user do
     get 'addresses', to: 'users/registrations#new_address'
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   
   root 'tops#index'  #rootをitemsからtopsに変更
   
-  resources :items, only: [:index, :new, :create, :show] do
+  resources :items, only: [:index, :new, :create, :edit, :update, :show, :destroy] do
     member do
       post 'purchase'
       get 'purchased'

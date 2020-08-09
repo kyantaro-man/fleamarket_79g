@@ -21,18 +21,28 @@
     .ItemShowContent__top
       .ItemBox
         .ItemBox__title
-          = @item.item_name
+
+          =@item.item_name
+          %br/
         .ItemBox__image
           .ItemBox__image--main
             = image_tag @item.images.first.src.url, size:"360x300", alt: "item-image"
+              -if @item.buyer_id.present? 
+              -# #"buyer_id"がある場合には、追加の記述を行う。
+              .items-box_photo__sold
+                .items-box_photo__sold__inner 
+                  SOLD
+
           %ul.ItemBox__image--sub
             -if @item.images.length >= 2                  #画像が２枚以上の時にサムネイル表示を行う
               - @item.images.each do |image|
                 %li
                   = image_tag image.src.url, size:"90x75", alt: "item-image"
         .ItemBox__price
-          %h1
-            = "#{@item.price}円"
+
+          %h1 
+            = @item.price
+
           .itemBox__price--detail
             (税込み)
             %br
@@ -40,9 +50,9 @@
         .ItemBox__buy
           -if user_signed_in?
             -if current_user.id == @item.user_id
-              = link_to "#", class: "ItemBox__buy--btn" do
+              = link_to edit_item_path(params[:id]), class: "ItemBox__buy--btn" do
                 編集する
-              = link_to "#", class: "ItemBox__buy--btn Btn--red" do
+              = link_to item_path(@item), method: :delete, class: "ItemBox__buy--btn Btn--red" do
                 削除する
             - elsif @item.buyer_id.present? 
               = link_to "売り切れました",buy_item_path, class:"ItemBox__buy--btn Btn--red Disabled"
