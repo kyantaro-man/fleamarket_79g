@@ -50,7 +50,7 @@
         .ItemBox__buy
           -if user_signed_in?
             -if current_user.id == @item.user_id
-              = link_to "#", class: "ItemBox__buy--btn" do
+              = link_to edit_item_path(params[:id]), class: "ItemBox__buy--btn" do
                 編集する
               = link_to item_path(@item), method: :delete, class: "ItemBox__buy--btn Btn--red" do
                 削除する
