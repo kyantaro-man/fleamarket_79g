@@ -1,7 +1,7 @@
 .Wrapper
   = form_with model: @item, html: {class: "form"}, local:true do |f|
     .Sell-header
-      =link_to root_path do
+      .Sell-header__logo
         = image_tag "logo.png", height: "60", with: "80"
 
     .Container
@@ -20,6 +20,7 @@
                 - if @item.persisted?
                   - @item.images.each_with_index do |image, i|
                     = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
+
         #image-file-fields
           = f.fields_for :images do |image|
             .js-file_group{"data-index" => "#{image.index}"}
@@ -31,10 +32,10 @@
           - if @item.persisted?
             .js-file_group{"data-index" => "#{@item.images.count}"}
               = file_field_tag :src, name: "item[images_attributes][#{@item.images.count}][src]", class: 'js-file'
-              .js-remove.hidden 
+              .js-remove.hidden
                 削除
+        
 
-            
 
             -# ____商品名__________________
     .Container
@@ -67,11 +68,7 @@
           .required
             必須
         .Form__contents
-          -# = f.text_field :category_id, class:'Form-sell__text'
-          .ItemCategory__parent
-            = select_tag("parent",options_for_select(@parents.pluck(:name, :id)), include_blank: '選択して下さい')
-          .ItemCategory__child         
-          .ItemCategory__grandchild
+          = f.text_field :category_id, class:'Form-sell__text'
           
 
         .Sell-contents__title
@@ -152,7 +149,7 @@
               ¥ ー
               
         .Submit-container
-          = f.submit "出品する",class:'Sell_submit'
+          = f.submit "変更する",class:'Sell_submit'
         .Split
           禁止されている行為および出品物を必ずご確認ください。偽ブランド品などの販売は犯罪であり、法律に
           より処罰される可能性があります。出品をもちまして加盟店規約に同意したことになります。
@@ -167,5 +164,4 @@
       %li
         = link_to "ポイントに関する特約", "#"
     .Sell-header
-      =link_to root_path do
-        = image_tag "logo.png", height: "60", with: "80"
+      = image_tag "logo.png", height: "60", with: "80"
