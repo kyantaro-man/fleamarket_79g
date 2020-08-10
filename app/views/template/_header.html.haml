@@ -2,7 +2,7 @@
   .header__main
     .header__box
       .header__logo
-        = link_to (image_tag "material/logo/logo.png", height: "50", width: "150")
+        = link_to (image_tag "material/logo/logo.png", height: "50", width: "150"), root_path
       %form.searchBox
         %input.input{type: "text", placeholder: "キーワードで検索"}
         = button_tag type: 'submit', class: "submit" do
