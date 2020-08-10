@@ -118,4 +118,5 @@
         = image_tag 'material/app/google-play-badge.png',class: "googleBtn"
 
 = render partial: "template/footer"
-= render partial: "template/exhibit"
+- if user_signed_in?
+  = render partial: "template/exhibit"
