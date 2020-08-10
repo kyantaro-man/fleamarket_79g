@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function (){
+$(document).on('turbolinks:load', function(){
   // 画像用のinputを生成する関数
   const buildFileField = (index)=> {
     const html = `<div data-index="${index}" class="js-file_group">
@@ -58,7 +58,7 @@ $(document).on('turbolinks:load', function (){
   });
 
   $(document).on('change', '.js-file', function(e) {
-    $(this).next().toggleClass('hidden')
+    $(this).next().removeClass('hidden')
   });
 
   $('#image-file-fields').on('click', '.js-remove', function() {

@@ -30,7 +30,8 @@ $(document).on('turbolinks:load', function() {              //初回読み込み
     });
   })
   //子カテゴリは動的に生成されたものなので、第二引数で指定する
-  $(document).on('change', '#child', function(){             //子カテゴリのが選択が変わると、子カテゴリのボックスを生成する
+  $(document).on('change', '#child', function(){ 
+    debugger            //子カテゴリのが選択が変わると、子カテゴリのボックスを生成する
     let id = $(this).val()                                   //選択されたカテゴリのidを取得
     $("#grandchild").remove();                               //孫カテゴリのボックスを消す
     $.ajax({
