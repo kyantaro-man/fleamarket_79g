@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :update,:show, :destroy, :buy, :purchase]
 
   def index
-    @items = Item.includes(:user)
+    @items = Item.all.includes(:user)
   
   end
 
