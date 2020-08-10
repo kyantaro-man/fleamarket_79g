@@ -21,6 +21,13 @@ class ItemsController < ApplicationController
     end
   end
 
+
+  def show    #商品詳細ページ
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
+  end
+  
+
   def edit
   end
 
@@ -34,8 +41,7 @@ class ItemsController < ApplicationController
   end
 
   
-  def show    #商品詳細ページ
-  end
+ 
 
   def destroy
     if @item.destroy
