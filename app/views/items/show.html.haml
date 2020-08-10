@@ -54,6 +54,8 @@
                 編集する
               = link_to item_path(@item), method: :delete, class: "ItemBox__buy--btn Btn--red" do
                 削除する
+            - elsif @item.buyer_id.present? 
+              = link_to "売り切れました",buy_item_path, class:"ItemBox__buy--btn Btn--red Disabled"
             - else
               = link_to buy_item_path, class: "ItemBox__buy--btn" do
                 購入する
