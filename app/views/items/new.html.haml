@@ -70,7 +70,7 @@
           -# = f.text_field :category_id, class:'Form-sell__text'
           .ItemCategory__parent
             = select_tag("parent",options_for_select(@parents.pluck(:name, :id)), include_blank: '選択して下さい')
-          .ItemCategory__child         
+          .ItemCategory__child
           .ItemCategory__grandchild
           
 
