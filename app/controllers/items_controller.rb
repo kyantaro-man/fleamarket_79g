@@ -54,7 +54,7 @@ class ItemsController < ApplicationController
   end
 
   def buy
-    if @item.user_id != current_user.id
+    if (@item.user_id != current_user.id) && !(@item.buyer_id.present?)
       @address = Address.find_by(user_id: current_user.id)
       #Payjpの秘密鍵を取得しています
       Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
@@ -83,7 +83,7 @@ class ItemsController < ApplicationController
   #↑同じ記述がcardsコントローラにもあります
 
   def purchase
-    if @item.user_id != current_user.id
+    if (@item.user_id != current_user.id) && !(@item.buyer_id.present?)
       Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
 
       charge = Payjp::Charge.create(
