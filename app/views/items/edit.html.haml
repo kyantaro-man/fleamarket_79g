@@ -69,10 +69,11 @@
             必須
         .Form__contents
           .ItemCategory__parent
-            = select_tag("parent",options_for_select(@parents.pluck(:name, :id)), include_blank: '選択して下さい')
-          .ItemCategory__child         
+            = select_tag("parent",options_for_select(@parents.pluck(:name, :id)), include_blank: @item.category.root.name)
+          .ItemCategory__child
+            = select_tag("child",options_for_select(@item.category.parent.siblings.pluck(:name, :id)), include_blank: @item.category.parent.name)         
           .ItemCategory__grandchild
-          
+            = select_tag("grandchild",options_for_select(@item.category.siblings.pluck(:name, :id)), include_blank: @item.category.name)
 
         .Sell-contents__title
           %h1
