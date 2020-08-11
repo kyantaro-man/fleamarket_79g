@@ -2,8 +2,13 @@ class Item < ApplicationRecord
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
 
-  validates :item_name, :category_id, :condition_id, :postageplayer_id,
-   :shippingdate_id, :price, :introduction, :prefecture_id, presence: true
+  validates :category_id, :condition_id, :postageplayer_id,
+   :shippingdate_id, :price, :prefecture_id, presence: true
+   validates :images,length: {minimum: 1, maximum: 5}
+
+  validates :item_name, length: {maximum: 40}, presence: true
+  validates :introduction, length: {maximum: 1000}, presence: true
+
 
   belongs_to :prefecture, optional: true
   belongs_to :category, optional: true

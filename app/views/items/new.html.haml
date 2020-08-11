@@ -12,7 +12,7 @@
           .required
             必須
         .Sell-contents__text
-          10枚までアップロードできます。
+          5枚までアップロードできます。
           .Sell-contents__imageBox
             
             #image-box
@@ -67,7 +67,6 @@
           .required
             必須
         .Form__contents
-          -# = f.text_field :category_id, class:'Form-sell__text'
           .ItemCategory__parent
             = select_tag("parent",options_for_select(@parents.pluck(:name, :id)), include_blank: '選択して下さい')
           .ItemCategory__child         
