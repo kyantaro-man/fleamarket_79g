@@ -83,17 +83,21 @@ class ItemsController < ApplicationController
   #↑同じ記述がcardsコントローラにもあります
 
   def purchase
-    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
+    if @item.user_id != current_user.id
+      Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
 
-    charge = Payjp::Charge.create(
-      amount: @item.price,
-      customer: Payjp::Customer.retrieve(@card.customer_id),
-      currency: 'jpy'
-    )
+      charge = Payjp::Charge.create(
+        amount: @item.price,
+        customer: Payjp::Customer.retrieve(@card.customer_id),
+        currency: 'jpy'
+      )
 
-    @item_buyer = Item.find(params[:id])
-    @item_buyer.update(buyer_id: current_user.id)
-    redirect_to purchased_item_path
+      @item_buyer = Item.find(params[:id])
+      @item_buyer.update(buyer_id: current_user.id)
+      redirect_to purchased_item_path
+    else
+      redirect_to root_path
+    end
   end
 
   private
