@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :move_to_login_session, except: [:show, :index]
   before_action :set_card, except: :show
   before_action :set_item, only: [:edit, :update,:show, :destroy, :buy, :purchase]
 
@@ -107,5 +108,10 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:item_name, :category_id, :brand, :condition_id, :postageplayer_id, :shippingdate_id, :price, :introduction, :buyer_id, :prefecture_id, images_attributes: [:src, :_destroy, :id]).merge(user_id: current_user.id)
   end  
 
+  def move_to_login_session
+    unless user_signed_in?
+      redirect_to user_session_path
+    end
+  end
   
 end
