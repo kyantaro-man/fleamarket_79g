@@ -28,7 +28,6 @@
           .ItemBox__image--main
             = image_tag @item.images.first.src.url, size:"360x300", alt: "item-image"
               -if @item.buyer_id.present? 
-              -# #"buyer_id"がある場合には、追加の記述を行う。
               .items-box_photo__sold
                 .items-box_photo__sold__inner 
                   SOLD
