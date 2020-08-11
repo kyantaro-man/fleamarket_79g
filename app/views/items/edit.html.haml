@@ -25,7 +25,7 @@
           = f.fields_for :images do |image|
             .js-file_group{"data-index" => "#{image.index}"}
               = image.file_field :src, class: 'js-file'
-              .js-remove.hidden
+              .js-remove
                 削除
             - if @item.persisted?
               = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
