@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   before_action :set_card, except: :show
   before_action :set_item, only: [:edit, :update,:show, :destroy, :buy, :purchase]
   before_action :cant_move_buy_purchase, only: [:edit, :buy, :purchase]
+  before_action :move_to_root_path, only: [:update, :destroy, :edit]
 
   def index
     @items = Item.all.includes(:user)
@@ -117,6 +118,12 @@ class ItemsController < ApplicationController
   def move_to_login_session
     unless user_signed_in?
       redirect_to user_session_path
+    end
+  end
+
+  def move_to_root_path
+    unless @item.user_id == current_user.id
+      redirect_to root_path
     end
   end
   
