@@ -61,6 +61,9 @@
         border-radius: 4px;
         background-color: #fff;
         color: #ea352d;
+        &:focus {
+          outline: none;
+        }
       }
     }
 
