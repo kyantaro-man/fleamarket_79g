@@ -113,6 +113,7 @@ class ItemsController < ApplicationController
   def cant_move_buy_purchase
     unless (@item.user_id != current_user.id) && !(@item.buyer_id.present?)
       redirect_to root_path
+    end
   end
     
   def move_to_login_session
