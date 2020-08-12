@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :move_to_login_session, except: [:show, :index]
   before_action :set_card, except: :show
   before_action :set_item, only: [:edit, :update,:show, :destroy, :buy, :purchase]
-  before_action :cant_move_buy_purchase, only: [:edit, :buy, :purchase]
+  before_action :cant_move_buy_purchase, only: [:buy, :purchase]
   before_action :move_to_root_path, only: [:update, :destroy, :edit]
 
   def index
@@ -33,6 +33,9 @@ class ItemsController < ApplicationController
   
 
   def edit
+    if @item.buyer_id.present?
+      redirect_to root_path
+    end
   end
 
 
@@ -53,7 +56,6 @@ class ItemsController < ApplicationController
     else
       render :edit
     end
-
   end
 
   def buy
@@ -111,7 +113,7 @@ class ItemsController < ApplicationController
   end
 
   def cant_move_buy_purchase
-    unless (@item.user_id != current_user.id) && !(@item.buyer_id.present?)
+    if (@item.user_id == current_user.id) || (@item.buyer_id.present?)
       redirect_to root_path
     end
   end
