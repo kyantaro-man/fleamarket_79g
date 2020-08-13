@@ -1,5 +1,5 @@
 document.addEventListener(
-  "DOMContentLoaded",
+  "turbolinks:load",
   (e) => {
     Payjp.setPublicKey("pk_test_9b3541215dcbac5f4a34a127");
     const btn = document.getElementById("token");
